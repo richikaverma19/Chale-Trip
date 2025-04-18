@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sham Valley Trek | Ladakh's Beginner-Friendly Trek | Himalayan Treks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #4CAF50;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Trek Details Section */
+        .trek-details {
+            padding: 60px 0;
+            background-color: #fff;
+        }
+
+        .details-container {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 40px;
+        }
+
+        .trek-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .trek-content h3 {
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            color: #333;
+        }
+
+        .trek-content p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .trek-content ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .trek-content li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .highlight-box {
+            background-color: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        /* Trek Overview Sidebar */
+        .trek-overview {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .overview-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .overview-item {
+            margin-bottom: 20px;
+        }
+
+        .overview-item h4 {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .overview-item p {
+            color: #666;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4CAF50;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 60px 0;
+            background-color: #f5f5f5;
+        }
+
+        .gallery-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Booking Section */
+        .booking {
+            padding: 60px 0;
+            background-color: #fff;
+        }
+
+        .booking-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .booking-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .booking-form {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .footer-links li {
+            margin: 0 15px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #4CAF50;
+        }
+
+        .copyright {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .details-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .trek-overview {
+                position: static;
+                margin-top: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .header-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <nav>
+            <div class="container">
+                <a href="index.html" class="logo">Ladakh Treks</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#treks">Treks</a></li>
+                    <li><a href="index.html#features">Why Us</a></li>
+                    <li><a href="destination.html" class="nav-link">Destination</a></li>
+                                <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="plantrip.html" class="nav-link">Plan Trip</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div class="header-content">
+            <h1>Sham Valley Trek</h1>
+            <p>Experience Ladakh's "Baby Trek" - perfect for beginners with stunning landscapes and cultural encounters</p>
+            
+        </div>
+    </header>
+    
+    <!-- Trek Details Section -->
+    <section class="trek-details">
+        <div class="container">
+            <div class="details-container">
+                <div class="trek-content">
+                    <h2>About Sham Valley Trek</h2>
+                    <p>The Sham Valley Trek, often called the "Baby Trek" of Ladakh, is the perfect introduction to high-altitude trekking. This 3-day journey through the lower reaches of Ladakh offers breathtaking landscapes, ancient monasteries, and authentic cultural experiences without the extreme altitudes of other Ladakh treks.</p>
+                    
+                    <div class="highlight-box">
+                        <p><strong>Highlights:</strong> Ancient monasteries, traditional Ladakhi villages, apricot orchards, stunning rock formations, and panoramic mountain views.</p>
+                    </div>
+                    
+                    <h3>Trek Itinerary</h3>
+                    <p><strong>Day 1: Leh to Likir (Drive) + Trek to Yangthang</strong></p>
+                    <ul>
+                        <li>Drive from Leh to Likir (2 hours)</li>
+                        <li>Visit 11th-century Likir Monastery</li>
+                        <li>Start trek through beautiful countryside</li>
+                        <li>Pass through traditional Ladakhi villages</li>
+                        <li>Reach Yangthang village (4-5 hours trek)</li>
+                        <li>Overnight homestay experience</li>
+                    </ul>
+                    
+                    <p><strong>Day 2: Yangthang to Hemis Shukpachan</strong></p>
+                    <ul>
+                        <li>Trek through apricot orchards and barley fields</li>
+                        <li>Cross several small streams</li>
+                        <li>Visit Rizong Monastery (optional detour)</li>
+                        <li>Arrive at Hemis Shukpachan village (5-6 hours)</li>
+                        <li>Explore local culture and traditions</li>
+                    </ul>
+                    
+                    <p><strong>Day 3: Hemis Shukpachan to Temisgam (Trek) + Drive to Leh</strong></p>
+                    <ul>
+                        <li>Final day of trekking through scenic valleys</li>
+                        <li>Visit Ang village and its monastery</li>
+                        <li>Arrive at Temisgam village (4-5 hours)</li>
+                        <li>Drive back to Leh (2 hours)</li>
+                        <li>Evening at leisure in Leh</li>
+                    </ul>
+                    
+                    <h3>What to Expect</h3>
+                    <p>The Sham Valley trek is rated as easy, making it perfect for beginners and families:</p>
+                    <ul>
+                        <li>Gentle trails with minimal elevation gain</li>
+                        <li>Authentic cultural experiences in Ladakhi villages</li>
+                        <li>Visits to ancient Buddhist monasteries</li>
+                        <li>Stunning views of the Stok Kangri range</li>
+                        <li>Opportunity to experience traditional Ladakhi hospitality</li>
+                    </ul>
+                    
+                    <h3>Essential Information</h3>
+                    <p><strong>Best Season:</strong> June to September</p>
+                    <p><strong>Difficulty:</strong> Easy (perfect for beginners)</p>
+                    <p><strong>Max Altitude:</strong> 3,800 meters (12,467 feet)</p>
+                    <p><strong>Trek Distance:</strong> 30 km (total)</p>
+                    <p><strong>Temperature:</strong> Day: 15-25°C, Night: 5-10°C</p>
+                </div>
+                
+                <div class="trek-overview">
+                    <h3 class="overview-title">Trek Overview</h3>
+                    
+                    <div class="overview-item">
+                        <h4><i class="fas fa-calendar-alt"></i> Duration</h4>
+                        <p>3 Days / 2 Nights</p>
+                    </div>
+                    
+                    <div class="overview-item">
+                        <h4><i class="fas fa-mountain"></i> Difficulty</h4>
+                        <p>Easy</p>
+                    </div>
+                    
+                    <div class="overview-item">
+                        <h4><i class="fas fa-arrow-up"></i> Max Altitude</h4>
+                        <p>3,800m (12,467 ft)</p>
+                    </div>
+                    
+                    <div class="overview-item">
+                        <h4><i class="fas fa-hiking"></i> Trek Distance</h4>
+                        <p>30 km (total)</p>
+                    </div>
+                    
+                    <div class="overview-item">
+                        <h4><i class="fas fa-calendar-day"></i> Best Season</h4>
+                        <p>June-September</p>
+                    </div>
+                    
+                    <div class="overview-item">
+                        <h4><i class="fas fa-users"></i> Group Size</h4>
+                        <p>4-12 people</p>
+                    </div>
+                    
+                    <div class="price">
+                        ₹12,999 <span style="font-size: 1rem; color: #666;">per person</span>
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="container">
+            <h2 class="gallery-title">Sham Valley Trek Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Likir Monastery">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581434681345-b92671b813d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ladakhi Village">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1588690154757-badf4644194f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Apricot Orchards">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Trekking Route">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581434681345-b92671b813d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mountain Views">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1588690154757-badf4644194f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Local Culture">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+        <div class="container">
+            <div class="booking-container">
+                <h2 class="booking-title">Book Your Sham Valley Trek</h2>
+                <div class="booking-form">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Preferred Date</label>
+                                <input type="date" id="date" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="participants">Number of Participants</label>
+                            <select id="participants" required>
+                                <option value="" disabled selected>Select</option>
+                                <option value="1">1 Person</option>
+                                <option value="2">2 People</option>
+                                <option value="3">3 People</option>
+                                <option value="4">4 People</option>
+                                <option value="5+">5+ People</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Special Requirements</label>
+                            <textarea id="message"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Confirm Booking</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#treks">Treks</a></li>
+                <li><a href="index.html#features">Why Us</a></li>
+                <li><a href="index.html#testimonials">Reviews</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright">© 2023 Chale Trip. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Form submission handling
+        const bookingForm = document.querySelector('.booking-form form');
+        if (bookingForm) {
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your booking request! We will contact you shortly to confirm your Sham Valley trek.');
+                this.reset();
+            });
+        }
+        
+        // Set minimum date for booking (tomorrow)
+        const dateInput = document.getElementById('date');
+        if (dateInput) {
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(today.getDate() + 1);
+            
+            const yyyy = tomorrow.getFullYear();
+            const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+            const dd = String(tomorrow.getDate()).padStart(2, '0');
+            
+            dateInput.min = `${yyyy}-${mm}-${dd}`;
+        }
+        
+        // Animation on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const windowHeight = window.innerHeight;
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < windowHeight - 100) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        // Initialize sections with fade-in effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                section.style.transitionDelay = `${index * 0.1}s`;
+            });
+            
+            // Trigger the animation
+            setTimeout(() => {
+                window.dispatchEvent(new Event('scroll'));
+            }, 100);
+        });
+    </script>
+</body>
+</html>

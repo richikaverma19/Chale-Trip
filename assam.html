@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assam Trek Adventures - Explore the Wild Beauty of Northeast India</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            height: 100vh;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .logo span {
+            color: #4CAF50;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #4CAF50;
+        }
+        
+        .header-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        
+        .header-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .header-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #45a049;
+        }
+        
+        /* Main Content */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #777;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Treks Grid */
+        .treks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .trek-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .trek-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .trek-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .trek-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .trek-card:hover .trek-img img {
+            transform: scale(1.1);
+        }
+        
+        .trek-info {
+            padding: 20px;
+        }
+        
+        .trek-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .trek-info p {
+            color: #777;
+            margin-bottom: 15px;
+        }
+        
+        .trek-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-img {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: #f9f9f9;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .author-info p {
+            color: #777;
+            font-size: 14px;
+        }
+        
+        /* Contact Section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .header-content h1 {
+                font-size: 36px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Assam<span>Trek</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#treks">Treks</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-content">
+                <h1>Discover the Wild Beauty of Assam</h1>
+                <p>Embark on unforgettable trekking adventures through the lush green hills, tea gardens, and wildlife sanctuaries of Assam. Experience the rich culture and biodiversity of Northeast India.</p>
+                <a href="#treks" class="btn">Explore Treks</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Treks Section -->
+    <section id="treks" class="treks">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Treks in Assam</h2>
+                <p>Choose from our carefully curated selection of trekking experiences in the breathtaking landscapes of Assam.</p>
+            </div>
+            
+            <div class="treks-grid">
+                <div class="trek-card">
+                    <div class="trek-img">
+                        <img src="https://images.unsplash.com/photo-1580193769210-b8d1c049a7d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Manas National Park Trek">
+                    </div>
+                    <div class="trek-info">
+                        <h3>Manas National Park Trek</h3>
+                        <p>Explore the UNESCO World Heritage Site known for its rare and endangered wildlife including tigers, elephants, and golden langurs.</p>
+                        <div class="trek-meta">
+                            <span>Duration: 3 Days</span>
+                            <span>Difficulty: Moderate</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trek-card">
+                    <div class="trek-img">
+                        <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dzukou Valley Trek">
+                    </div>
+                    <div class="trek-info">
+                        <h3>Dzukou Valley Trek</h3>
+                        <p>Witness the "Valley of Flowers of the East" with its rolling hills covered in seasonal flowers and pristine streams.</p>
+                        <div class="trek-meta">
+                            <span>Duration: 4 Days</span>
+                            <span>Difficulty: Moderate</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trek-card">
+                    <div class="trek-img">
+                        <img src="https://images.unsplash.com/photo-1500380804539-4e1e8c1e7118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tea Garden Trails">
+                    </div>
+                    <div class="trek-info">
+                        <h3>Tea Garden Trails</h3>
+                        <p>Walk through the famous tea estates of Assam, learning about tea production and enjoying breathtaking views.</p>
+                        <div class="trek-meta">
+                            <span>Duration: 2 Days</span>
+                            <span>Difficulty: Easy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Why Trek With Us?</h3>
+                    <p>Assam Trek is a locally owned and operated adventure company specializing in eco-friendly trekking experiences in Assam and surrounding areas.</p>
+                    <p>Our guides are certified professionals with extensive knowledge of the local terrain, flora, fauna, and tribal cultures. We prioritize sustainable tourism practices that benefit local communities.</p>
+                    <p>Whether you're a seasoned trekker or a beginner, we have adventures tailored to your skill level and interests. From wildlife spotting to cultural immersion, we create experiences that go beyond the ordinary.</p>
+                    <a href="#contact" class="btn">Contact Us</a>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Assam Trek Team">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Trekkers Say</h2>
+                <p>Hear from adventurers who have experienced Assam with us.</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>"The Manas National Park trek was absolutely incredible. Our guide's knowledge of the wildlife was impressive, and we spotted rhinos, elephants, and even a tiger! The team took care of everything, making it a stress-free adventure."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Priya Sharma">
+                        </div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>Mumbai, India</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>"As a solo female traveler, I felt completely safe with Assam Trek. The Dzukou Valley was like something out of a dream, and the local Naga food we had was delicious. Can't recommend this experience enough!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Emma Wilson">
+                        </div>
+                        <div class="author-info">
+                            <h4>Emma Wilson</h4>
+                            <p>London, UK</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>"The tea garden trek was the perfect mix of nature and culture. Learning about tea production while walking through these beautiful landscapes was fascinating. The team's attention to detail and hospitality was outstanding."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Rajiv Mehta">
+                        </div>
+                        <div class="author-info">
+                            <h4>Rajiv Mehta</h4>
+                            <p>Delhi, India</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Plan Your Assam Adventure</h2>
+                <p>Ready to explore Assam's wilderness? Contact us to book your trek or ask any questions.</p>
+            </div>
+            
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="trek">Interested Trek</label>
+                        <select id="trek" class="form-control">
+                            <option value="">Select a trek</option>
+                            <option value="manas">Manas National Park Trek</option>
+                            <option value="dzukou">Dzukou Valley Trek</option>
+                            <option value="tea">Tea Garden Trails</option>
+                            <option value="custom">Custom Trek</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Assam Trek</h3>
+                    <p>Creating unforgettable trekking experiences in the beautiful landscapes of Assam since 2010.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f">FB</i></a>
+                        <a href="#"><i class="fab fa-instagram">IG</i></a>
+                        <a href="#"><i class="fab fa-twitter">TW</i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#treks">Treks</a>
+                    <a href="#about">About Us</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p>Guwahati, Assam, India</p>
+                    <p>Phone: +91 98765 43210</p>
+                    <p>Email: info@assamtrek.com</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Assam Trek. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

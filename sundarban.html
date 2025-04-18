@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sundarban Tour | ChaleTrip - Explore the Mangrove Kingdom</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #27ae60;
+            --secondary-color: #2ecc71;
+            --accent-color: #16a085;
+            --light-bg: #e8f8f5;
+            --dark-text: #1a5276;
+            --light-text: #6c757d;
+            --white: #ffffff;
+            --mangrove: #45b39d;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --border-radius: 16px;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 24px;
+            transition: var(--transition);
+        }
+        
+        .nav-logo i {
+            margin-right: 10px;
+            font-size: 28px;
+            color: var(--accent-color);
+        }
+        
+        .nav-logo span {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .nav-auth {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.5);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(22, 160, 133, 0.6), rgba(22, 160, 133, 0.7)), 
+                        url('https://images.unsplash.com/photo-1581430872224-2c82e52f3222?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 80px;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -10%;
+            width: 120%;
+            height: 200px;
+            background: var(--light-bg);
+            transform: rotate(-3deg);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            animation: slideUp 1s ease;
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            line-height: 1.2;
+            color: var(--white);
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        .weather-badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 12px 25px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Floating Elements */
+        .floating-tiger {
+            position: absolute;
+            right: 5%;
+            bottom: 20%;
+            width: 150px;
+            animation: floating 6s ease-in-out infinite;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+            opacity: 0.9;
+        }
+        
+        .floating-mangrove {
+            position: absolute;
+            left: 5%;
+            top: 30%;
+            width: 120px;
+            animation: floating 8s ease-in-out infinite 1s;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+            opacity: 0.8;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        /* Main Content */
+        .destination-overview {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+            transform: translateY(-50px);
+        }
+        
+        .destination-overview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: url('https://cdn-icons-png.flaticon.com/512/2040/2040946.png') no-repeat;
+            background-size: contain;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .destination-overview h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .destination-overview h2 i {
+            color: var(--mangrove);
+            font-size: 1.8rem;
+        }
+        
+        .destination-overview p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--dark-text);
+            line-height: 1.8;
+        }
+        
+        .highlight-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat {
+            background: rgba(46, 204, 113, 0.2);
+            padding: 15px 25px;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            color: var(--accent-color);
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .stat i {
+            font-size: 1.2rem;
+            color: var(--mangrove);
+        }
+        
+        /* Sundarban Specific Styles */
+        .tour-badge {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .wildlife-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .unesco-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: rgba(22, 160, 133, 0.9);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Transport Options */
+        .transport-section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .transport-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .transport-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 5px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .transport-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .transport-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .transport-card i {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+        }
+        
+        .transport-card ul {
+            list-style: none;
+        }
+        
+        .transport-card li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: var(--dark-text);
+        }
+        
+        .transport-card li i {
+            color: var(--mangrove);
+            font-size: 0.9rem;
+            margin-top: 3px;
+        }
+        
+        .transport-card .duration {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Tour Packages */
+        .route-section {
+            background: linear-gradient(135deg, rgba(22, 160, 133, 0.1), rgba(46, 204, 113, 0.2));
+            padding: 60px;
+            border-radius: var(--border-radius);
+            margin-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .route-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: url('https://cdn-icons-png.flaticon.com/512/854/854878.png') no-repeat;
+            background-size: contain;
+            opacity: 0.1;
+        }
+        
+        .route-section h2 {
+            color: var(--accent-color);
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .route-section h2 i {
+            color: var(--primary-color);
+        }
+        
+        .route-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .route-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .route-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .route-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .route-card:hover .route-image {
+            transform: scale(1.05);
+        }
+        
+        .route-content {
+            padding: 25px;
+        }
+        
+        .route-content h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .route-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: var(--light-text);
+        }
+        
+        .route-distance {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .route-time {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .route-highlights {
+            margin-top: 15px;
+        }
+        
+        .route-highlights li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        
+        .route-highlights i {
+            color: var(--mangrove);
+            font-size: 0.8rem;
+            margin-top: 3px;
+        }
+        
+        /* Attractions Section */
+        .attractions-section {
+            margin-bottom: 80px;
+        }
+        
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .attraction-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .attraction-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .attraction-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            z-index: 2;
+        }
+        
+        .attraction-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .attraction-card:hover .attraction-image {
+            transform: scale(1.1);
+        }
+        
+        .attraction-content {
+            padding: 25px;
+            position: relative;
+        }
+        
+        .attraction-content h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .attraction-content p {
+            color: var(--light-text);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .attraction-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--mangrove);
+            font-weight: 500;
+        }
+        
+        .attraction-price {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        /* Highlights Section */
+        .highlights-section {
+            background: linear-gradient(135deg, rgba(232, 248, 245, 0.8), rgba(69, 179, 157, 0.1));
+            padding: 60px;
+            border-radius: var(--border-radius);
+            margin-bottom: 80px;
+        }
+        
+        .highlights-section h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .highlight-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .highlight-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .highlight-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        .highlight-card p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+        }
+        
+        /* Best Time to Visit */
+        .best-time-section {
+            margin-bottom: 80px;
+        }
+        
+        .time-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .time-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .time-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .time-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        .time-card .temp {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .time-card .season {
+            color: var(--light-text);
+            margin-bottom: 15px;
+        }
+        
+        .time-card .description {
+            color: var(--dark-text);
+            font-size: 0.9rem;
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            margin-bottom: 80px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: 250px;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--white);
+            padding: 15px;
+            font-size: 1rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--white);
+            padding: 80px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            position: relative;
+            z-index: 2;
+            font-size: 1.1rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-text);
+            color: var(--white);
+            padding: 80px 0 30px;
+            position: relative;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--white);
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column p {
+            margin-bottom: 20px;
+            color: #adb5bd;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .footer-column a:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.2rem;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #adb5bd;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .route-section, .highlights-section, .cta-section {
+                padding: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 0;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                height: auto;
+                padding: 120px 0 80px;
+                min-height: auto;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .destination-overview {
+                padding: 30px;
+                transform: translateY(0);
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .route-section, .highlights-section, .cta-section {
+                padding: 30px;
+            }
+            
+            .floating-tiger, .floating-mangrove {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .transport-card, .attraction-card, .highlight-card {
+                max-width: 100%;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="nav-logo">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>ChaleTrip</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="destination.html" class="nav-link">Destinations</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="plantrip.html" class="nav-link">Plan Trip</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                           </ul>
+            
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <img src="https://cdn-icons-png.flaticon.com/512/3069/3069172.png" class="floating-tiger" alt="Royal Bengal Tiger">
+        <img src="https://cdn-icons-png.flaticon.com/512/3163/3163478.png" class="floating-mangrove" alt="Mangrove Forest">
+        <div class="hero-content">
+            <h1>Sundarban National Park, West Bengal</h1>
+            <p class="subtitle">Explore the Mystical Mangrove Kingdom of the Royal Bengal Tiger</p>
+            <div class="weather-badge">
+                <i class="fas fa-sun"></i> 28°C • Humid
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="destination-overview">
+            <h2><i class="fas fa-info-circle"></i> Overview</h2>
+            <p>The Sundarbans is a vast mangrove forest in the delta formed by the confluence of the Ganges, Brahmaputra and Meghna rivers in the Bay of Bengal. Spanning India and Bangladesh, this UNESCO World Heritage Site is famous for its Royal Bengal Tigers, saltwater crocodiles, and diverse marine life. The Indian side, Sundarban National Park, covers about 1,330 sq km of mangrove forests and water channels, home to over 100 tigers and numerous bird species. This unique ecosystem with its labyrinth of tidal waterways, mudflats and small islands is best explored by boat, offering an unforgettable wilderness experience.</p>
+            
+            <div class="highlight-stats">
+                <div class="stat">
+                    <i class="fas fa-star"></i>
+                    <span>4.7/5 (4.5K reviews)</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Best Season: Nov-Feb</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Area: 1,330 sq km</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-paw"></i>
+                    <span>100+ Royal Bengal Tigers</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- How to Reach Section -->
+        <div class="transport-section">
+            <h2 class="section-title"><i class="fas fa-route"></i> How to Reach Sundarbans</h2>
+            <div class="transport-options">
+                <div class="transport-card">
+                    <div class="duration">3 hrs from airport</div>
+                    <h3><i class="fas fa-plane"></i> By Air</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Nearest airport: Netaji Subhas Chandra Bose (Kolkata) - 110km away</li>
+                        <li><i class="fas fa-check"></i> Major airlines: Air India, IndiGo, SpiceJet</li>
+                        <li><i class="fas fa-check"></i> International flights available from major cities</li>
+                        <li><i class="fas fa-check"></i> Taxi fare to Godkhali: ₹2500-3500</li>
+                        <li><i class="fas fa-check"></i> Helicopter services available from Kolkata</li>
+                    </ul>
+                </div>
+                
+                <div class="transport-card">
+                    <div class="duration">1-2 hrs from Kolkata</div>
+                    <h3><i class="fas fa-train"></i> By Train</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Nearest station: Canning - 48km from entry point</li>
+                        <li><i class="fas fa-check"></i> Local trains from Sealdah (Kolkata) to Canning</li>
+                        <li><i class="fas fa-check"></i> Duration: 1.5-2 hours from Kolkata</li>
+                        <li><i class="fas fa-check"></i> Taxi/bus options available from Canning</li>
+                        <li><i class="fas fa-check"></i> Scenic countryside route</li>
+                    </ul>
+                </div>
+                
+                <div class="transport-card">
+                    <div class="duration">3-4 hrs from Kolkata</div>
+                    <h3><i class="fas fa-bus"></i> By Road</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Well-connected via NH12 and State Highways</li>
+                        <li><i class="fas fa-check"></i> Kolkata to Godkhali (entry point) - 110km</li>
+                        <li><i class="fas fa-check"></i> WBTDC buses (₹200-300 per person)</li>
+                        <li><i class="fas fa-check"></i> Private taxi options (₹3000-4000 one way)</li>
+                        <li><i class="fas fa-check"></i> Beautiful rural Bengal landscapes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tour Packages -->
+        <div class="route-section">
+            <h2><i class="fas fa-ship"></i> Sundarban Tour Packages</h2>
+            <div class="route-grid">
+                <div class="route-card">
+                    <img src="https://images.unsplash.com/photo-1581430872224-2c82e52f3222?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Standard Package" class="route-image">
+                    <div class="route-content">
+                        <h3>Standard Package</h3>
+                        <div class="route-details">
+                            <span class="route-distance"><i class="fas fa-ship"></i> 2 Nights</span>
+                            <span class="route-time"><i class="fas fa-clock"></i> 3 Days</span>
+                        </div>
+                        <ul class="route-highlights">
+                            <li><i class="fas fa-map-marker-alt"></i> Route: Godkhali → Sajnekhali → Sudhanyakhali → Dobanki</li>
+                            <li><i class="fas fa-utensils"></i> Stay at: Basic lodges or houseboats</li>
+                            <li><i class="fas fa-camera"></i> Activities: Watchtower visits, boat safaris</li>
+                            <li><i class="fas fa-paw"></i> Wildlife: Tiger spotting, crocodiles, birds</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="route-card">
+                    <img src="https://images.unsplash.com/photo-1581430872224-2c82e52f3222?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Premium Package" class="route-image">
+                    <div class="route-content">
+                        <h3>Premium Package</h3>
+                        <div class="route-details">
+                            <span class="route-distance"><i class="fas fa-ship"></i> 3 Nights</span>
+                            <span class="route-time"><i class="fas fa-clock"></i> 4 Days</span>
+                        </div>
+                        <ul class="route-highlights">
+                            <li><i class="fas fa-map-marker-alt"></i> Route: Includes Netidhopani, Burirdabri</li>
+                            <li><i class="fas fa-utensils"></i> Stay at: Comfortable resorts or cruise ships</li>
+                            <li><i class="fas fa-camera"></i> Extra: Village tours, cultural programs</li>
+                            <li><i class="fas fa-binoculars"></i> More wildlife spotting opportunities</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="route-card">
+                    <img src="https://images.unsplash.com/photo-1581430872224-2c82e52f3222?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Photography Tour" class="route-image">
+                    <div class="route-content">
+                        <h3>Photography Tour</h3>
+                        <div class="route-details">
+                            <span class="route-distance"><i class="fas fa-ship"></i> 4 Nights</span>
+                            <span class="route-time"><i class="fas fa-clock"></i> 5 Days</span>
+                        </div>
+                        <ul class="route-highlights">
+                            <li><i class="fas fa-map-marker-alt"></i> Special access to prime locations</li>
+                            <li><i class="fas fa-utensils"></i> Expert photography guides</li>
+                            <li><i class="fas fa-camera"></i> Golden hour shoots, hide photography</li>
+                            <li><i class="fas fa-paw"></i> Focus on tigers, birds, landscapes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Top Attractions -->
+        <div class="attractions-section">
+            <h2 class="section-title"><i class="fas fa-landmark"></i> Must-Visit Attractions</h2>
+            <div class="attractions-grid">
+                <div class="attraction-card">
+                    <div class="unesco-badge">
+                        <i class="fas fa-award"></i> UNESCO Site
+                    </div>
+                    <div class="attraction-badge">Top Rated</div>
+                    <img src="https://images.unsplash.com/photo-1581430872224-2c82e52f3222?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Sundarban Tiger Reserve" class="attraction-image">
+                    <div class="attraction-content">
+                        <div class="tour-badge">Wildlife Safari</div>
+                        <div class="wildlife-badge">Tiger Habitat</div>
+                        <h3>Sundarban Tiger Reserve</h3>
+                        <p>The core area of Sundarbans National Park, home to the majestic Royal Bengal Tigers. Explore the mangrove forests by boat and watchtowers for potential tiger sightings. The reserve also hosts saltwater crocodiles, spotted deer, and numerous bird species.</p>
+                        <div class="attraction-meta">
+                            <div class="rating">
+                                <i class="fas fa-star"></i> 4.9 (15,210 reviews)
+                            </div>
+                            <div class="attraction-price">
+                                Safari Cost: ₹1,500-3,000
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attraction-card">
+                    <div class="unesco-badge">
+                        <i class="fas fa-award"></i> UNESCO Site
+                    </div>
+                    <div class="attraction-badge">Birding</div>
+                    <img src="https://images.unsplash.com/photo-1581430872224-2c82e52f3222?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Sajnekhali Bird Sanctuary" class="attraction-image">
+                    <div class="attraction-content">
+                        <div class="tour-badge">Bird Watching</div>
+                        <h3>Sajnekhali Bird Sanctuary</h3>
+                        <p>Home to over 200 species of birds including kingfishers, herons, egrets, and the rare masked finfoot. Features a watchtower, crocodile pond, and the Sundarbans interpretation center. Best visited during winter migratory season.</p>
+                        <div class="attraction-meta">
+                            <div class="rating">
+                                <i class="fas fa-star"></i> 4.7 (9,730 reviews)
+                            </div>
+                            <div class="attraction-price">
+                                Entry: ₹200
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attraction-card">
+                    <div class="attraction-badge">Cultural</div>
+                    <img src="https://images.unsplash.com/photo-1581430872224-2c82e52f3222?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Bonnie Camp" class="attraction-image">
+                    <div class="attraction-content">
+                        <div class="tour-badge">Watchtower</div>
+                        <h3>Bonnie Camp Watchtower</h3>
+                        <p>One of the best spots for tiger sightings with a panoramic view of the jungle. The watchtower overlooks a large water body where animals come to drink. Also offers views of the Bangladesh side of Sundarbans.</p>
+                        <div class="attraction-meta">
+                            <div class="rating">
+                                <i class="fas fa-star"></i> 4.6 (8,520 reviews)
+                            </div>
+                            <div class="attraction-price">
+                                Included in Safari
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attraction-card">
+                    <div class="attraction-badge">Viewpoint</div>
+                    <img src="https://images.unsplash.com/photo-1581430872224-2c82e52f3222?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Dobanki Camp" class="attraction-image">
+                    <div class="attraction-content">
+                        <div class="tour-badge">Canopy Walk</div>
+                        <h3>Dobanki Canopy Walk</h3>
+                        <p>An elevated 500m long canopy walkway through the mangrove forest at 20ft height. Offers unique perspective of the ecosystem and chance to spot wildlife. Features interpretation boards about flora and fauna.</p>
+                        <div class="attraction-meta">
+                            <div class="rating">
+                                <i class="fas fa-star"></i> 4.8 (7,980 reviews)
+                            </div>
+                            <div class="attraction-price">
+                                Included in Safari
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attraction-card">
+                    <div class="attraction-badge">Unique</div>
+                    <img src="https://images.unsplash.com/photo-1581430872224-2c82e52f3222?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Village Tour" class="attraction-image">
+                    <div class="attraction-content">
+                        <div class="tour-badge">Cultural</div>
+                        <h3>Local Village Tour</h3>
+                        <p>Visit traditional villages like Dayapur or Pakhiralay to experience local life. See honey collection demonstrations, traditional fishing methods, and handicrafts. Opportunity to buy local honey and handicrafts.</p>
+                        <div class="attraction-meta">
+                            <div class="rating">
+                                <i class="fas fa-star"></i> 4.5 (6,250 reviews)
+                            </div>
+                            <div class="attraction-price">
+                                ₹500-1000
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attraction-card">
+                    <div class="attraction-badge">Sunset</div>
+                    <img src="https://images.unsplash.com/photo-1581430872224-2c82e52f3222?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Ganges Delta" class="attraction-image">
+                    <div class="attraction-content">
+                        <div class="tour-badge">Scenic</div>
+                        <h3>Ganges Delta Cruise</h3>
+                        <p>Boat cruise through the intricate network of rivers and creeks that form the Ganges Delta. Witness stunning sunsets, observe dolphins, and see the unique mangrove ecosystem up close.</p>
+                        <div class="attraction-meta">
+                            <div class="rating">
+                                <i class="fas fa-star"></i> 4.7 (8,820 reviews)
+                            </div>
+                            <div class="attraction-price">
+                                ₹1000-2000
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Highlights Section -->
+        <div class="highlights-section">
+            <h2><i class="fas fa-star"></i> Sundarban Highlights</h2>
+            
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <i class="fas fa-paw"></i>
+                    <h3>Royal Bengal Tigers</h3>
+                    <p>Spot the famous swimming tigers adapted to the mangrove ecosystem - the only place where tigers live in mangrove forests</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <i class="fas fa-tree"></i>
+                    <h3>Mangrove Forests</h3>
+                    <p>Explore the world's largest mangrove forest with its unique ecosystem and biodiversity</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <i class="fas fa-ship"></i>
+                    <h3>Boat Safaris</h3>
+                    <p>Navigate through narrow creeks and wide rivers to spot wildlife from the safety of boats</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <i class="fas fa-crow"></i>
+                    <h3>Bird Watching</h3>
+                    <p>Over 300 bird species including kingfishers, herons, egrets and migratory birds in winter</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <i class="fas fa-fish"></i>
+                    <h3>Aquatic Life</h3>
+                    <p>See saltwater crocodiles, Gangetic dolphins, fishing cats, and numerous fish species</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <i class="fas fa-umbrella-beach"></i>
+                    <h3>Unique Ecosystem</h3>
+                    <p>Witness the fascinating adaptation of plants and animals to the tidal mangrove environment</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Best Time to Visit -->
+        <div class="best-time-section">
+            <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Best Time to Visit</h2>
+            <div class="time-grid">
+                <div class="time-card">
+                    <h3>Winter (Nov-Feb)</h3>
+                    <div class="temp">15°C - 25°C</div>
+                    <div class="season">Peak Season</div>
+                    <div class="description">
+                        Pleasant weather with cool breezes. Best time for wildlife spotting and bird watching as migratory birds arrive. Clear skies and comfortable for boat safaris.
+                    </div>
+                </div>
+                
+                <div class="time-card">
+                    <h3>Spring (Mar-Apr)</h3>
+                    <div class="temp">25°C - 35°C</div>
+                    <div class="season">Shoulder Season</div>
+                    <div class="description">
+                        Temperature starts rising but still good for visits. Fewer tourists. Honey collection season begins - chance to see traditional methods.
+                    </div>
+                </div>
+                
+                <div class="time-card">
+                    <h3>Monsoon (May-Oct)</h3>
+                    <div class="temp">28°C - 35°C</div>
+                    <div class="season">Off Season</div>
+                    <div class="description">
+                        Hot and humid with heavy rains. Many areas inaccessible due to high tides. Some lodges closed. But lush greenery and dramatic skies for photography.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Gallery Section -->
+        <div class="gallery-section">
+            <h2 class="section-title"><i class="fas fa-images"></i> Sundarban Through the Lens</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581430872224-2c82e52f3222?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Royal Bengal Tiger">
+                    <div class="gallery-caption">Royal Bengal Tiger swimming in the mangrove creeks</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581430872224-2c82e52f3222?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Mangrove Forest">
+                    <div class="gallery-caption">Dense mangrove forests with intricate root systems</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581430872224-2c82e52f3222?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Boat Safari">
+                    <div class="gallery-caption">Boat safari through narrow mangrove creeks</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581430872224-2c82e52f3222?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Saltwater Crocodile">
+                    <div class="gallery-caption">Saltwater crocodile basking on a mudflat</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581430872224-2c82e52f3222?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Spotted Deer">
+                    <div class="gallery-caption">Spotted deer - primary prey of the Sundarban tigers</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581430872224-2c82e52f3222?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Village Life">
+                    <div class="gallery-caption">Traditional village life in the Sundarban buffer zone</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Ready for Your Sundarban Adventure?</h2>
+            <p>Let our wildlife experts arrange your perfect Sundarban tour with experienced guides, comfortable boats, and quality accommodations.</p>
+            <div class="cta-buttons">
+                <a href="plantrip.html" class="btn btn-primary">Book My Tour</a>
+                
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ChaleTrip</h3>
+                    <p>Making travel planning easy and memorable since 2023. We help you discover India's hidden gems with authentic experiences.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Wildlife Tours</h3>
+                    <ul>
+                        <li><a href="sundarban.html">Sundarban National Park</a></li>
+                        <li><a href="kaziranga.html">Kaziranga National Park</a></li>
+                        <li><a href="ranthambore.html">Ranthambore National Park</a></li>
+                        <li><a href="gir.html">Gir National Park</a></li>
+                        <li><a href="bandhavgarh.html">Bandhavgarh National Park</a></li>
+                        <li><a href="periyar.html">Periyar Wildlife Sanctuary</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Travel Resources</h3>
+                    <ul>
+                        <li><a href="#">Wildlife Viewing Tips</a></li>
+                        <li><a href="#">Photography Guide</a></li>
+                        <li><a href="#">Packing Checklist</a></li>
+                        <li><a href="#">Best Wildlife Seasons</a></li>
+                        <li><a href="#">Permit Information</a></li>
+                        <li><a href="#">Travel Insurance</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="blog.html">Travel Blog</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 ChaleTrip. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--primary-color);"></i> in India</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.destination-overview, .transport-card, .attraction-card, .highlight-card, .time-card, .gallery-item');
+            
+            elements.forEach((element, index) => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.1}s`;
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on load
+        
+        // Floating elements animation
+        const floatingElements = document.querySelectorAll('.floating-tiger, .floating-mangrove');
+        floatingElements.forEach(el => {
+            const randomDelay = Math.random() * 2;
+            el.style.animationDelay = `${randomDelay}s`;
+        });
+    </script>
+</body>
+</html>

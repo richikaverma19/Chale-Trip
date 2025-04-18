@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tea Garden Trails - Explore Nature's Finest Teas</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #4a6b3a;
+            --secondary-color: #d4e6b5;
+            --accent-color: #ff9a56;
+            --light-color: #f8f5f0;
+            --dark-color: #2a3a1f;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1517438476312-10d79c077509');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            background-color: rgba(0,0,0,0.3);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--light-color);
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20%;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 5rem 10%;
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+        }
+        
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        /* Tea Varieties */
+        .tea-varieties {
+            padding: 5rem 10%;
+            background-color: var(--secondary-color);
+            text-align: center;
+        }
+        
+        .tea-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .tea-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .tea-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .tea-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .tea-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .tea-card:hover .tea-img img {
+            transform: scale(1.1);
+        }
+        
+        .tea-info {
+            padding: 1.5rem;
+        }
+        
+        .tea-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        /* Virtual Tour */
+        .virtual-tour {
+            padding: 5rem 10%;
+            text-align: center;
+        }
+        
+        .tour-container {
+            margin-top: 3rem;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .tour-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+        
+        /* Contact */
+        .contact {
+            padding: 5rem 10%;
+            background-color: var(--secondary-color);
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 5rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 10%;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-links a {
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            .about, .contact-container {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero {
+                padding: 0 10%;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Tea <span>Garden</span> Trails</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="destination.html">Destination</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="plantrip.html" class="nav-link">Plan Trip</a>
+                <a href="#about">About</a>
+                <a href="#teas">Teas</a>
+                <a href="#tour">Tour</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+        
+        <div class="hero">
+            <h1>Discover Nature's Finest Teas</h1>
+            <p>Experience the journey from leaf to cup through our organic tea gardens nestled in the misty mountains.</p>
+            <a href="#teas" class="btn">Explore Our Teas</a>
+        </div>
+    </header>
+    
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1559170892-3f1df88eac0a" alt="Tea Garden">
+        </div>
+        <div class="about-content">
+            <h2 class="section-title">Our Story</h2>
+            <p>Founded in 1985, Tea Garden Trails has been cultivating premium quality teas using sustainable and organic farming practices. Our gardens are located in the pristine hills where the perfect combination of altitude, soil, and climate creates teas with exceptional flavor profiles.</p>
+            <p>We believe in preserving traditional tea-making techniques while innovating to meet modern tastes. Every cup of our tea tells a story of careful cultivation, ethical sourcing, and artisanal craftsmanship.</p>
+            <a href="#tour" class="btn" style="margin-top: 1.5rem;">Take a Virtual Tour</a>
+        </div>
+    </section>
+    
+    <!-- Tea Varieties -->
+    <section id="teas" class="tea-varieties">
+        <h2 class="section-title">Our Tea Collection</h2>
+        <p>Explore our handcrafted selection of premium teas, each with its own unique character and flavor profile.</p>
+        
+        <div class="tea-grid">
+            <div class="tea-card">
+                <div class="tea-img">
+                    <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9" alt="Green Tea">
+                </div>
+                <div class="tea-info">
+                    <h3>Mountain Mist Green</h3>
+                    <p>A delicate green tea with fresh grassy notes and a light sweetness, harvested in early spring.</p>
+                    <a href="#" class="btn" style="display: inline-block; margin-top: 1rem;">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="tea-card">
+                <div class="tea-img">
+                    <img src="https://images.unsplash.com/photo-1560343090-f0409e92791a" alt="Black Tea">
+                </div>
+                <div class="tea-info">
+                    <h3>Sunrise Black</h3>
+                    <p>Full-bodied with malty notes and a hint of caramel, perfect for morning energy.</p>
+                    <a href="#" class="btn" style="display: inline-block; margin-top: 1rem;">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="tea-card">
+                <div class="tea-img">
+                    <img src="https://images.unsplash.com/photo-1558160074-4d7d8bdf4256" alt="Oolong Tea">
+                </div>
+                <div class="tea-info">
+                    <h3>Jade Oolong</h3>
+                    <p>Partially oxidized for a complex flavor profile with floral and creamy notes.</p>
+                    <a href="#" class="btn" style="display: inline-block; margin-top: 1rem;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Virtual Tour -->
+    <section id="tour" class="virtual-tour">
+        <h2 class="section-title">Virtual Garden Tour</h2>
+        <p>Experience our tea gardens from anywhere in the world with our immersive virtual tour.</p>
+        
+        <div class="tour-container">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+    
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Visit Us</h2>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Tea Garden Trails</h3>
+                <p>123 Mountain View Road<br>
+                Tea Valley, TV 12345<br>
+                Country</p>
+                
+                <h3 style="margin-top: 2rem;">Contact Information</h3>
+                <p><i class="fas fa-phone"></i> +1 (123) 456-7890<br>
+                <i class="fas fa-envelope"></i> info@teagardentrails.com</p>
+                
+                <h3 style="margin-top: 2rem;">Tour Hours</h3>
+                <p>Monday - Friday: 9am - 5pm<br>
+                Saturday: 10am - 4pm<br>
+                Sunday: Closed</p>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#teas">Teas</a>
+            <a href="#tour">Tour</a>
+            <a href="#contact">Contact</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+        
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        
+        <p>&copy; 2023 Chale Trip. All rights reserved.</p>
+    </footer>
+</body>
+</html>

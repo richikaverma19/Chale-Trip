@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chardham Yatra - Yamunotri | Gangotri | Kedarnath | Badrinath</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://example.com/chardham-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 20px;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .tagline {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .prayer-btn {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .prayer-btn:hover {
+            background-color: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        nav {
+            background-color: #2c3e50;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            color: #ff6b6b;
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .intro {
+            text-align: center;
+            margin: 50px 0;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .dham-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 50px 0;
+        }
+        
+        .dham-card {
+            width: 48%;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: white;
+        }
+        
+        .dham-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .dham-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .dham-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .dham-card:hover .dham-img img {
+            transform: scale(1.1);
+        }
+        
+        .dham-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        .dham-content {
+            padding: 25px;
+        }
+        
+        .dham-content h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+        
+        .dham-content p {
+            margin-bottom: 15px;
+        }
+        
+        .highlights {
+            background-color: #2c3e50;
+            color: white;
+            padding: 60px 0;
+            margin: 50px 0;
+            text-align: center;
+        }
+        
+        .highlight-box {
+            display: inline-block;
+            width: 200px;
+            margin: 20px;
+            padding: 20px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .highlight-box:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .highlight-box i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+            color: #ff6b6b;
+        }
+        
+        .itinerary {
+            margin: 50px 0;
+        }
+        
+        .day-card {
+            background: white;
+            border-left: 5px solid #ff6b6b;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .day-card:hover {
+            transform: translateX(10px);
+        }
+        
+        .day-card h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        
+        .map-container {
+            margin: 50px 0;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        footer {
+            background-color: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 50px 0 30px;
+            margin-top: 50px;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 15px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #ff6b6b;
+        }
+        
+        .contact-info {
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .dham-card {
+                width: 100%;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 10px 0;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Chardham Yatra</h1>
+        <p class="tagline">The Sacred Journey to Four Abodes of Gods</p>
+        <button class="prayer-btn">🕉️ Chant Om Namah Shivaya</button>
+    </header>
+    
+    <nav>
+        <ul>
+             <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="destination.html" class="nav-link">Destinations</a></li>
+                <li><a href="plantrip.html" class="nav-link">Plan Trip</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#yamunotri">Yamunotri</a></li>
+            <li><a href="#gangotri">Gangotri</a></li>
+            <li><a href="#kedarnath">Kedarnath</a></li>
+            <li><a href="#badrinath">Badrinath</a></li>
+            <li><a href="#itinerary">Itinerary</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="overview" class="intro">
+            <h2>The Sacred Chardham Yatra</h2>
+            <p>The Chardham Yatra is one of Hinduism's most sacred pilgrimages, encompassing four holy sites nestled in the Garhwal Himalayas of Uttarakhand. This spiritual journey takes devotees to the sources of two sacred rivers (Yamunotri and Gangotri) and two of Lord Shiva and Vishnu's most revered shrines (Kedarnath and Badrinath).</p>
+            <p>Traditionally undertaken from west to east in the order: Yamunotri → Gangotri → Kedarnath → Badrinath, this pilgrimage is believed to wash away sins and help attain moksha (liberation). The yatra typically opens in April/May and closes around Diwali (October/November) each year.</p>
+        </section>
+        
+        <section class="dham-cards">
+            <div class="dham-card" id="yamunotri">
+                <div class="dham-img">
+                    <img src="https://example.com/yamunotri.jpg" alt="Yamunotri Temple">
+                    <h2 class="dham-title">Yamunotri</h2>
+                </div>
+                <div class="dham-content">
+                    <h3>Source of the Yamuna River</h3>
+                    <p>Yamunotri, at an elevation of 3,293 meters, is the westernmost shrine in the Chardham circuit. The temple is dedicated to Goddess Yamuna and the thermal springs at Janki Chatti are a major attraction.</p>
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>Yamunotri Temple (built in 1839 by Tehri Naresh Sudarshan Shah)</li>
+                        <li>Divya Shila - a rock pillar worshipped before entering temple</li>
+                        <li>Surya Kund - boiling hot spring where rice is cooked as prasad</li>
+                        <li>6 km trek from Hanuman Chatti (or pony/doli available)</li>
+                        <li>Best visited May-June and September-October</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="dham-card" id="gangotri">
+                <div class="dham-img">
+                    <img src="https://example.com/gangotri.jpg" alt="Gangotri Temple">
+                    <h2 class="dham-title">Gangotri</h2>
+                </div>
+                <div class="dham-content">
+                    <h3>Source of the Ganges River</h3>
+                    <p>Located at 3,100 meters, Gangotri is where Goddess Ganga descended when Lord Shiva released her from his locks. The temple was built by Gorkha General Amar Singh Thapa in the 18th century.</p>
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>Gangotri Temple (white marble structure)</li>
+                        <li>Bhagirath Shila - rock where King Bhagirath meditated</li>
+                        <li>Gaumukh Glacier - actual source 19km trek from Gangotri</li>
+                        <li>Submerged Shivling - visible in winter when water recedes</li>
+                        <li>Pandava Gufa - where Pandavas meditated during exile</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="dham-card" id="kedarnath">
+                <div class="dham-img">
+                    <img src="https://example.com/kedarnath.jpg" alt="Kedarnath Temple">
+                    <h2 class="dham-title">Kedarnath</h2>
+                </div>
+                <div class="dham-content">
+                    <h3>Abode of Lord Shiva</h3>
+                    <p>Perched at 3,583 meters amidst snow-capped peaks, Kedarnath is one of the 12 Jyotirlingas. The temple is believed to have been built by the Pandavas and revived by Adi Shankaracharya.</p>
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>Kedarnath Temple (stone edifice of unknown antiquity)</li>
+                        <li>Samadhi of Adi Shankaracharya behind the temple</li>
+                        <li>Bhaironath Temple - protector of Kedarnath</li>
+                        <li>16 km trek from Gaurikund (or helicopter service available)</li>
+                        <li>Extremely cold even in summer (carry woolens)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="dham-card" id="badrinath">
+                <div class="dham-img">
+                    <img src="https://example.com/badrinath.jpg" alt="Badrinath Temple">
+                    <h2 class="dham-title">Badrinath</h2>
+                </div>
+                <div class="dham-content">
+                    <h3>Abode of Lord Vishnu</h3>
+                    <p>Situated at 3,133 meters along the Alaknanda River, Badrinath is part of both Chardham and India's Char Dham. The temple was established by Adi Shankaracharya in the 9th century.</p>
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>Badrinath Temple (brightly colored facade with gold gilt roof)</li>
+                        <li>Tapt Kund - natural hot spring for ritual bath before darshan</li>
+                        <li>Mana Village - last Indian village before Tibet border</li>
+                        <li>Valley of Flowers & Hemkund Sahib nearby</li>
+                        <li>Neelkanth Peak - stunning backdrop to the temple</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="highlights">
+            <h2>Why Undertake the Chardham Yatra?</h2>
+            <div class="highlight-box">
+                <i class="fas fa-mountain"></i>
+                <h4>Spiritual Cleansing</h4>
+                <p>Believed to wash away sins and grant moksha</p>
+            </div>
+            <div class="highlight-box">
+                <i class="fas water-river"></i>
+                <h4>Sacred Rivers</h4>
+                <p>Visit sources of Yamuna and Ganga rivers</p>
+            </div>
+            <div class="highlight-box">
+                <i class="fas fa-om"></i>
+                <h4>Divine Darshan</h4>
+                <p>Worship at ancient temples of Shiva and Vishnu</p>
+            </div>
+            <div class="highlight-box">
+                <i class="fas landscape"></i>
+                <h4>Himalayan Beauty</h4>
+                <p>Breathtaking mountain scenery throughout</p>
+            </div>
+        </section>
+        
+        <section id="itinerary" class="itinerary">
+            <h2 style="text-align: center;">Sample 12-Day Chardham Yatra Itinerary</h2>
+            
+            <div class="day-card">
+                <h3>Day 1-2: Arrival in Haridwar/Rishikesh</h3>
+                <p>Arrival and acclimatization. Visit Har Ki Pauri, Mansa Devi Temple, and attend Ganga Aarti in Haridwar.</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>Day 3: Haridwar → Barkot (220km/7-8hrs)</h3>
+                <p>Travel to Barkot, the base for Yamunotri. Stop at Mussoorie for lunch with views of Doon Valley.</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>Day 4: Barkot → Yamunotri → Barkot (42km + 6km trek)</h3>
+                <p>Early morning drive to Janki Chatti, then trek to Yamunotri. Return to Barkot in evening.</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>Day 5: Barkot → Uttarkashi (160km/6-7hrs)</h3>
+                <p>Drive to Uttarkashi via beautiful Himalayan valleys. Visit Kashi Vishwanath Temple in evening.</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>Day 6: Uttarkashi → Gangotri → Uttarkashi (100km each way)</h3>
+                <p>Day trip to Gangotri. Attend evening aarti at the temple before returning to Uttarkashi.</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>Day 7: Uttarkashi → Guptkashi (220km/8-9hrs)</h3>
+                <p>Long drive through Tehri and along Mandakini River to reach Guptkashi, the base for Kedarnath.</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>Day 8: Guptkashi → Kedarnath (30km + 16km trek)</h3>
+                <p>Drive to Gaurikund, then trek to Kedarnath. Overnight at Kedarnath (or return same day by helicopter).</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>Day 9: Kedarnath → Guptkashi</h3>
+                <p>Morning darshan before descending back to Guptkashi. Rest and recuperate.</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>Day 10: Guptkashi → Badrinath (170km/7-8hrs)</h3>
+                <p>Drive through Joshimath to reach Badrinath. Evening visit to temple and Tapt Kund.</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>Day 11: Badrinath → Rudraprayag (160km/6-7hrs)</h3>
+                <p>Morning darshan and visit to Mana Village before driving back to Rudraprayag.</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>Day 12: Rudraprayag → Haridwar (160km/5-6hrs)</h3>
+                <p>Return journey with stops at Devprayag (confluence of Alaknanda and Bhagirathi rivers).</p>
+            </div>
+        </section>
+        
+        <div class="map-container">
+            <h2>Chardham Route Map</h2>
+            <div style="height: 400px; background-color: #eee; display: flex; justify-content: center; align-items: center; border-radius: 8px;">
+                [Interactive map would go here showing the route from Delhi/Haridwar → Yamunotri → Gangotri → Kedarnath → Badrinath → Return]
+            </div>
+        </div>
+    </div>
+    
+    <footer id="contact">
+        <h3>Begin Your Spiritual Journey</h3>
+        <div class="contact-info">
+            <p><i class="fas fa-phone-alt"></i> +91-9876543210</p>
+            <p><i class="fas fa-envelope"></i> info@chardhamyatra.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> 24, Chardham Road, Rishikesh, Uttarakhand</p>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p style="margin-top: 30px;">&copy; 2023 Chale Trip. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Simple prayer button functionality
+        document.querySelector('.prayer-btn').addEventListener('click', function() {
+            alert('ॐ नमः शिवाय\nOm Namah Shivaya\nMay Lord Shiva bless your pilgrimage!');
+        });
+    </script>
+</body>
+</html>

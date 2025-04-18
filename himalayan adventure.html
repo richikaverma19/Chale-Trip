@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himalayan Treks - Explore Manali, Shimla, Leh, Meghalaya & Assam</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        nav {
+            background-color: var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+        
+        .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin: 40px 0 20px;
+            text-align: center;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin: 20px 0 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .intro {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: white;
+        }
+        
+        .trek-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .trek-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .trek-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .trek-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .trek-info {
+            padding: 20px;
+        }
+        
+        .trek-info h3 {
+            margin-bottom: 15px;
+        }
+        
+        .trek-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #7f8c8d;
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .easy {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        .moderate {
+            background-color: #f39c12;
+            color: white;
+        }
+        
+        .difficult {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .testimonials {
+            background-color: var(--light-color);
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .testimonial {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .contact {
+            padding: 60px 20px;
+            background-color: white;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+            }
+            
+            .nav-links li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Himalayan Trekking Adventures</h1>
+        <p>Explore the majestic Himalayas across Manali, Shimla, Leh, Meghalaya & Assam</p>
+        <a href="#treks" class="btn">Explore Treks</a>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Himalayan Treks</a>
+            <ul class="nav-links">
+                
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="#treks">Our Treks</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="plantrip.html" class="nav-link">Plan Trip</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li
+
+               
+            </ul>
+        </div>
+    </nav>
+    
+    <section class="intro">
+        <div class="container">
+            <h2>Discover the Roof of the World</h2>
+            <p>Embark on unforgettable journeys through the breathtaking landscapes of the Himalayas. From the snow-capped peaks of Leh to the lush green valleys of Meghalaya, we offer carefully curated trekking experiences that combine adventure, culture, and natural beauty.</p>
+        </div>
+    </section>
+    
+    <section id="treks" class="container">
+        <h2>Featured Treks</h2>
+        <div class="trek-cards">
+            <div class="trek-card">
+                <img src="https://images.unsplash.com/photo-1580655650445-73e0e8b8b96d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Hampta Pass Trek" class="trek-img">
+                <div class="trek-info">
+                    <h3>Hampta Pass Trek</h3>
+                    <div class="trek-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Manali, Himachal Pradesh</span>
+                        <span><i class="fas fa-mountain"></i> 4,270m</span>
+                    </div>
+                    <p>A dramatic crossover trek from the lush Kullu Valley to the arid landscapes of Lahaul, offering stunning views of the Himalayas.</p>
+                    <span class="difficulty moderate">Moderate</span>
+                    <a href="#" class="btn" style="display: block; text-align: center; margin-top: 15px;">Book Now</a>
+                </div>
+            </div>
+            
+            <div class="trek-card">
+                <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Markha Valley Trek" class="trek-img">
+                <div class="trek-info">
+                    <h3>Markha Valley Trek</h3>
+                    <div class="trek-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Leh, Ladakh</span>
+                        <span><i class="fas fa-mountain"></i> 5,200m</span>
+                    </div>
+                    <p>Explore the stunning Markha Valley, crossing high mountain passes, visiting remote monasteries, and experiencing Ladakhi culture.</p>
+                    <span class="difficulty difficult">Difficult</span>
+                    <a href="#" class="btn" style="display: block; text-align: center; margin-top: 15px;">Book Now</a>
+                </div>
+            </div>
+            
+            <div class="trek-card">
+                <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dzukou Valley Trek" class="trek-img">
+                <div class="trek-info">
+                    <h3>Dzukou Valley Trek</h3>
+                    <div class="trek-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Nagaland/Manipur</span>
+                        <span><i class="fas fa-mountain"></i> 2,452m</span>
+                    </div>
+                    <p>Known as the "Valley of Flowers of the East," this trek takes you through lush green valleys and vibrant seasonal flowers.</p>
+                    <span class="difficulty easy">Easy</span>
+                    <a href="#" class="btn" style="display: block; text-align: center; margin-top: 15px;">Book Now</a>
+                </div>
+            </div>
+            
+            <div class="trek-card">
+                <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Kanchenjunga Base Camp" class="trek-img">
+                <div class="trek-info">
+                    <h3>Kanchenjunga Base Camp</h3>
+                    <div class="trek-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Sikkim</span>
+                        <span><i class="fas fa-mountain"></i> 5,143m</span>
+                    </div>
+                    <p>An epic journey to the base of the world's third highest mountain, through remote villages and pristine landscapes.</p>
+                    <span class="difficulty difficult">Difficult</span>
+                    <a href="#" class="btn" style="display: block; text-align: center; margin-top: 15px;">Book Now</a>
+                </div>
+            </div>
+            
+            <div class="trek-card">
+                <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Living Root Bridges Trek" class="trek-img">
+                <div class="trek-info">
+                    <h3>Living Root Bridges Trek</h3>
+                    <div class="trek-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Meghalaya</span>
+                        <span><i class="fas fa-mountain"></i> 1,200m</span>
+                    </div>
+                    <p>Explore the unique living root bridges of Meghalaya, trekking through some of the wettest places on earth with stunning waterfalls.</p>
+                    <span class="difficulty easy">Easy</span>
+                    <a href="#" class="btn" style="display: block; text-align: center; margin-top: 15px;">Book Now</a>
+                </div>
+            </div>
+            
+            <div class="trek-card">
+                <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sandakphu Trek" class="trek-img">
+                <div class="trek-info">
+                    <h3>Sandakphu Trek</h3>
+                    <div class="trek-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> West Bengal</span>
+                        <span><i class="fas fa-mountain"></i> 3,636m</span>
+                    </div>
+                    <p>The highest point in West Bengal offering panoramic views of four of the world's five highest peaks.</p>
+                    <span class="difficulty moderate">Moderate</span>
+                    <a href="#" class="btn" style="display: block; text-align: center; margin-top: 15px;">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="destinations" class="container">
+        <h2>Our Destinations</h2>
+        <div class="trek-cards">
+            <div class="trek-card">
+                <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Manali" class="trek-img">
+                <div class="trek-info">
+                    <h3>Manali</h3>
+                    <p>Gateway to numerous Himalayan treks with beautiful valleys, snow-capped peaks, and adventure sports.</p>
+                    <ul>
+                        <li>Hampta Pass</li>
+                        <li>Beas Kund</li>
+                        <li>Bhrigu Lake</li>
+                        <li>Pin Parvati Pass</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="trek-card">
+                <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Shimla" class="trek-img">
+                <div class="trek-info">
+                    <h3>Shimla</h3>
+                    <p>Beautiful hill station with colonial charm and access to great trekking routes in the lower Himalayas.</p>
+                    <ul>
+                        <li>Jakhu Hill</li>
+                        <li>Shali Tibba</li>
+                        <li>Churdhar Peak</li>
+                        <li>Hatu Peak</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="trek-card">
+                <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Leh-Ladakh" class="trek-img">
+                <div class="trek-info">
+                    <h3>Leh-Ladakh</h3>
+                    <p>High altitude desert with breathtaking landscapes, Buddhist culture, and challenging treks.</p>
+                    <ul>
+                        <li>Markha Valley</li>
+                        <li>Stok Kangri</li>
+                        <li>Chadar Trek</li>
+                        <li>Nubra Valley</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="trek-card">
+                <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Meghalaya" class="trek-img">
+                <div class="trek-info">
+                    <h3>Meghalaya</h3>
+                    <p>Abode of clouds with lush green landscapes, living root bridges, and unique trekking experiences.</p>
+                    <ul>
+                        <li>Living Root Bridges</li>
+                        <li>Nongriat Trek</li>
+                        <li>David Scott Trail</li>
+                        <li>Cherrapunji Trails</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="trek-card">
+                <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Assam" class="trek-img">
+                <div class="trek-info">
+                    <h3>Assam</h3>
+                    <p>Gateway to Northeast India with tea gardens, wildlife, and access to Arunachal treks.</p>
+                    <ul>
+                        <li>Dima Hasao Treks</li>
+                        <li>Kaziranga Trails</li>
+                        <li>Manas National Park</li>
+                        <li>Haflong Hill Treks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>What Our Trekkers Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah">
+                    <h3>Sarah K.</h3>
+                    <p>"The Hampta Pass trek was absolutely breathtaking! The guides were knowledgeable and the organization was flawless. Can't wait for my next Himalayan adventure!"</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Raj">
+                    <h3>Raj P.</h3>
+                    <p>"Completed the Markha Valley trek last summer. Challenging but incredibly rewarding. The team took care of everything so we could focus on the experience."</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emma">
+                    <h3>Emma L.</h3>
+                    <p>"The Living Root Bridges trek in Meghalaya was magical. Completely different from other Himalayan treks but equally amazing. Highly recommended!"</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Ready for Your Adventure?</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="trek">Interested Trek</label>
+                        <select id="trek">
+                            <option value="">Select a trek</option>
+                            <option value="hampta">Hampta Pass Trek</option>
+                            <option value="markha">Markha Valley Trek</option>
+                            <option value="dzukou">Dzukou Valley Trek</option>
+                            <option value="kanchenjunga">Kanchenjunga Base Camp</option>
+                            <option value="root-bridges">Living Root Bridges Trek</option>
+                            <option value="sandakphu">Sandakphu Trek</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <h3>Himalayan Treks</h3>
+            <p>Exploring the majestic Himalayas since 2005</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <p>&copy; 2023 Himalayan Treks. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wild India Safari - Ranthambore, Kanha & Bandhavgarh National Parks</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #388e3c;
+            --primary-dark: #2e7d32;
+            --secondary: #f57f17;
+            --light: #f5f5f5;
+            --dark: #212121;
+            --text: #333;
+            --text-light: #666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.7;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1545468800-85cc9bc6ecf7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .header-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .header-content h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        .header-content p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            max-width: 800px;
+        }
+        
+        /* Parks Grid */
+        .parks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .park-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .park-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .park-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .park-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .park-card:hover .park-img img {
+            transform: scale(1.1);
+        }
+        
+        .park-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .park-info {
+            padding: 25px;
+        }
+        
+        .park-info h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .park-info p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        
+        .park-features {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .feature {
+            text-align: center;
+        }
+        
+        .feature i {
+            font-size: 20px;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .feature span {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        
+        /* Wildlife Section */
+        .wildlife {
+            background: var(--light);
+        }
+        
+        .species-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .species-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .species-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .species-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 15px;
+            border: 3px solid var(--primary);
+        }
+        
+        .species-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .species-card h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .species-card p {
+            font-size: 14px;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        /* Safari Experience */
+        .experience-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .experience-img {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .experience-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .experience-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .experience-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+        
+        .experience-features {
+            margin-top: 30px;
+        }
+        
+        .exp-feature {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .exp-feature i {
+            font-size: 24px;
+            color: var(--secondary);
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .exp-feature h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1470114716159-e389f8712fda?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+        }
+        
+        .testimonials .section-title h2 {
+            color: white;
+        }
+        
+        .testimonials .section-title p {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .testimonial-text:before {
+            content: '"';
+            font-size: 60px;
+            color: rgba(255,255,255,0.2);
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-family: serif;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* Booking Section */
+        .booking-section {
+            background: var(--light);
+        }
+        
+        .booking-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .booking-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .booking-form h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .booking-info {
+            padding: 20px 0;
+        }
+        
+        .booking-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .info-item i {
+            font-size: 24px;
+            color: var(--secondary);
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .info-item h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .header-content h1 {
+                font-size: 48px;
+            }
+            
+            .experience-container, .booking-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-img {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .header-content h1 {
+                font-size: 36px;
+            }
+            
+            .header-content p {
+                font-size: 18px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Chale<span>Trip</span></div>
+                <ul class="nav-links">
+                     <li><a href="/index.html" class="nav-link">Home</a></li>
+                <li><a href="/destinations.html" class="nav-link">Destinations</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="plantrip.html" class="nav-link">Plan Trip</a></li>
+
+
+                    <li><a href="#parks">National Parks</a></li>
+                    <li><a href="#wildlife">Wildlife</a></li>
+                    <li><a href="#experience">Safari</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#booking">Book Now</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-content">
+                <h1>Discover India's Wild Treasures</h1>
+                <p>Experience the majestic tigers and incredible biodiversity of Ranthambore, Kanha and Bandhavgarh National Parks with our expert-guided safaris.</p>
+                <a href="#booking" class="btn">Book Your Safari</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Parks Section -->
+    <section id="parks" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Explore Our National Parks</h2>
+                <p>Home to the majestic Bengal tiger and countless other species, these parks offer unforgettable wildlife experiences</p>
+            </div>
+            
+            <div class="parks-grid">
+                <!-- Ranthambore -->
+                <div class="park-card">
+                    <div class="park-img">
+                        <img src="https://images.unsplash.com/photo-1545468800-85cc9bc6ecf7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ranthambore National Park">
+                        <div class="park-tag">Tiger Reserve</div>
+                    </div>
+                    <div class="park-info">
+                        <h3>Ranthambore National Park</h3>
+                        <p>Famous for its tiger population and the historic Ranthambore Fort, this park offers some of the best tiger sighting opportunities in India.</p>
+                        
+                        <div class="park-features">
+                            <div class="feature">
+                                <i class="fas fa-paw"></i>
+                                <span>50+ Tigers</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-tree"></i>
+                                <span>392 km² Area</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Oct-Jun</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="btn btn-outline">Explore Ranthambore</a>
+                    </div>
+                </div>
+                
+                <!-- Kanha -->
+                <div class="park-card">
+                    <div class="park-img">
+                        <img src="https://images.unsplash.com/photo-1581337204873-ef36aa186caa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Kanha National Park">
+                        <div class="park-tag">Tiger Reserve</div>
+                    </div>
+                    <div class="park-info">
+                        <h3>Kanha National Park</h3>
+                        <p>Inspiration for Rudyard Kipling's Jungle Book, Kanha's sal forests and grassy meadows are home to tigers, leopards and the hardground barasingha.</p>
+                        
+                        <div class="park-features">
+                            <div class="feature">
+                                <i class="fas fa-paw"></i>
+                                <span>100+ Tigers</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-tree"></i>
+                                <span>940 km² Area</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Oct-Jun</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="btn btn-outline">Explore Kanha</a>
+                    </div>
+                </div>
+                
+                <!-- Bandhavgarh -->
+                <div class="park-card">
+                    <div class="park-img">
+                        <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Bandhavgarh National Park">
+                        <div class="park-tag">Tiger Reserve</div>
+                    </div>
+                    <div class="park-info">
+                        <h3>Bandhavgarh National Park</h3>
+                        <p>With one of the highest densities of tigers in India, Bandhavgarh's varied terrain includes steep ridges, open meadows and dense forests.</p>
+                        
+                        <div class="park-features">
+                            <div class="feature">
+                                <i class="fas fa-paw"></i>
+                                <span>60+ Tigers</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-tree"></i>
+                                <span>716 km² Area</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Oct-Jun</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="btn btn-outline">Explore Bandhavgarh</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Wildlife Section -->
+    <section id="wildlife" class="wildlife section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Iconic Wildlife Species</h2>
+                <p>These national parks are home to an incredible diversity of flora and fauna</p>
+            </div>
+            
+            <div class="species-grid">
+                <div class="species-card">
+                    <div class="species-img">
+                        <img src="https://images.unsplash.com/photo-1561731216-c3f4b5dfd2b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Bengal Tiger">
+                    </div>
+                    <h4>Bengal Tiger</h4>
+                    <p>Star Attraction</p>
+                </div>
+                
+                <div class="species-card">
+                    <div class="species-img">
+                        <img src="https://images.unsplash.com/photo-1534188754912-156a2c20cd23?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Leopard">
+                    </div>
+                    <h4>Indian Leopard</h4>
+                    <p>Elusive Predator</p>
+                </div>
+                
+                <div class="species-card">
+                    <div class="species-img">
+                        <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sloth Bear">
+                    </div>
+                    <h4>Sloth Bear</h4>
+                    <p>Nocturnal Forager</p>
+                </div>
+                
+                <div class="species-card">
+                    <div class="species-img">
+                        <img src="https://images.unsplash.com/photo-1551410224-699683e15636?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Barasingha">
+                    </div>
+                    <h4>Hardground Barasingha</h4>
+                    <p>Kanha's Pride</p>
+                </div>
+                
+                <div class="species-card">
+                    <div class="species-img">
+                        <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Indian Bison">
+                    </div>
+                    <h4>Indian Gaur</h4>
+                    <p>Largest Bovine</p>
+                </div>
+                
+                <div class="species-card">
+                    <div class="species-img">
+                        <img src="https://images.unsplash.com/photo-1550358864-518f202c02ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sambar Deer">
+                    </div>
+                    <h4>Sambar Deer</h4>
+                    <p>Tiger's Favorite Prey</p>
+                </div>
+                
+                <div class="species-card">
+                    <div class="species-img">
+                        <img src="https://images.unsplash.com/photo-1581337204820-9aef6a5b96b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Wild Dog">
+                    </div>
+                    <h4>Dhole (Wild Dog)</h4>
+                    <p>Endangered Species</p>
+                </div>
+                
+                <div class="species-card">
+                    <div class="species-img">
+                        <img src="https://images.unsplash.com/photo-1550355255-8d5cabfadf4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Peacock">
+                    </div>
+                    <h4>Indian Peafowl</h4>
+                    <p>National Bird</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Safari Experience -->
+    <section id="experience" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Safari Experience</h2>
+                <p>Our carefully crafted safari experiences bring you closer to nature</p>
+            </div>
+            
+            <div class="experience-container">
+                <div class="experience-text">
+                    <h3>Unforgettable Wildlife Encounters</h3>
+                    <p>Our safaris are designed to maximize your chances of wildlife sightings while ensuring minimal disturbance to the animals. With expert naturalists and trackers, we take you deep into the heart of these incredible ecosystems.</p>
+                    <p>Choose from morning and evening jeep safaris, full-day excursions, or specialized photography tours. Each safari is a unique adventure with opportunities to see tigers, leopards, sloth bears, and hundreds of bird species.</p>
+                    
+                    <div class="experience-features">
+                        <div class="exp-feature">
+                            <i class="fas fa-binoculars"></i>
+                            <div>
+                                <h4>Expert Guides</h4>
+                                <p>Our naturalists have 10+ years of experience tracking wildlife</p>
+                            </div>
+                        </div>
+                        
+                        <div class="exp-feature">
+                            <i class="fas fa-camera"></i>
+                            <div>
+                                <h4>Photography Focus</h4>
+                                <p>Specialized vehicles and positioning for best shots</p>
+                            </div>
+                        </div>
+                        
+                        <div class="exp-feature">
+                            <i class="fas fa-leaf"></i>
+                            <div>
+                                <h4>Eco-Friendly</h4>
+                                <p>Responsible tourism that supports conservation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="experience-img">
+                    <img src="https://images.unsplash.com/photo-1542038782526-759bd5b5b0c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Jeep Safari">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Visitor Experiences</h2>
+                <p>What our guests say about their wildlife adventures with us</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>Our safari in Ranthambore was beyond expectations. We spotted a tigress with her cubs on our very first drive! The guide's knowledge of animal behavior was incredible.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>London, UK</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>Kanha National Park is magical. We saw tigers, leopards, and the rare barasingha. The accommodation was comfortable and the food delicious. Will definitely return!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rajesh Patel">
+                        </div>
+                        <div class="author-info">
+                            <h4>Rajesh Patel</h4>
+                            <p>Mumbai, India</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>Bandhavgarh exceeded all our expectations. Our guide's tracking skills led us to incredible tiger sightings. The landscape with its ancient fort is breathtaking.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Chen">
+                        </div>
+                        <div class="author-info">
+                            <h4>Emily Chen</h4>
+                            <p>New York, USA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Booking Section -->
+    <section id="booking" class="booking-section section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Plan Your Safari</h2>
+                <p>Book your wildlife adventure with India's leading safari specialists</p>
+            </div>
+            
+            <div class="booking-container">
+                <div class="booking-form">
+                    <h3>Enquiry Form</h3>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <input type="text" id="country" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="park">Preferred National Park</label>
+                            <select id="park" class="form-control" required>
+                                <option value="">Select a park</option>
+                                <option value="ranthambore">Ranthambore National Park</option>
+                                <option value="kanha">Kanha National Park</option>
+                                <option value="bandhavgarh">Bandhavgarh National Park</option>
+                                <option value="multiple">Multiple Parks</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">Preferred Dates</label>
+                                <input type="date" id="date" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="duration">Duration (Nights)</label>
+                                <select id="duration" class="form-control" required>
+                                    <option value="2">2 Nights</option>
+                                    <option value="3">3 Nights</option>
+                                    <option value="4">4 Nights</option>
+                                    <option value="5+">5+ Nights</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Special Requirements</label>
+                            <textarea id="message" class="form-control" rows="4"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Submit Enquiry</button>
+                    </form>
+                </div>
+                
+                <div class="booking-info">
+                    <h3>Why Book With Us?</h3>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-trophy"></i>
+                        <div>
+                            <h4>Expertise</h4>
+                            <p>15+ years organizing wildlife safaris with the best local guides</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-lock"></i>
+                        <div>
+                            <h4>Permits Guaranteed</h4>
+                            <p>We handle all safari permits and logistics for you</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-hotel"></i>
+                        <div>
+                            <h4>Quality Accommodation</h4>
+                            <p>Carefully selected lodges close to park gates</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <div>
+                            <h4>Conservation Focus</h4>
+                            <p>Part of your fee supports local conservation efforts</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Chale Trip</h3>
+                    <p>Specializing in wildlife safaris across India's premier national parks since 2023. Committed to responsible tourism that benefits conservation.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>National Parks</h3>
+                    <a href="#">Ranthambore</a>
+                    <a href="#">Kanha</a>
+                    <a href="#">Bandhavgarh</a>
+                    <a href="#">Pench</a>
+                    <a href="#">Tadoba</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Safari Types</h3>
+                    <a href="#">Jeep Safaris</a>
+                    <a href="#">Photography Tours</a>
+                    <a href="#">Birding Tours</a>
+                    <a href="#">Family Safaris</a>
+                    <a href="#">Luxury Safaris</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Forest Road, New Delhi, India</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@wildindia.com</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Chale Trip. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

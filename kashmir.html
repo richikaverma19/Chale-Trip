@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kashmir Great Lakes Trek | Paradise on Earth | Himalayan Treks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #4CAF50;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #3e8e41;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Trek Details Section */
+        .trek-details {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .details-container {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 40px;
+        }
+
+        .trek-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .trek-content h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: #4CAF50;
+        }
+
+        .trek-content h3 {
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            color: #2c3e50;
+        }
+
+        .trek-content p {
+            margin-bottom: 20px;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .trek-content ul {
+            margin-bottom: 25px;
+            padding-left: 25px;
+        }
+
+        .trek-content li {
+            margin-bottom: 12px;
+            color: #555;
+            position: relative;
+            padding-left: 25px;
+            line-height: 1.6;
+        }
+
+        .trek-content li:before {
+            content: '\f058';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: #4CAF50;
+            position: absolute;
+            left: 0;
+        }
+
+        .highlight-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #4CAF50;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-size: 1.1rem;
+        }
+
+        /* Trek Overview Sidebar */
+        .trek-overview {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            height: fit-content;
+            position: sticky;
+            top: 30px;
+        }
+
+        .overview-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+        .overview-title:after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #4CAF50;
+        }
+
+        .overview-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .overview-item:last-child {
+            border-bottom: none;
+        }
+
+        .overview-item h4 {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .overview-item h4 i {
+            margin-right: 10px;
+            color: #4CAF50;
+        }
+
+        .overview-item p {
+            color: #666;
+            font-size: 1rem;
+            padding-left: 30px;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+            text-align: center;
+            margin: 35px 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: #777;
+            display: block;
+            font-weight: normal;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 80px 0;
+            background-color: #f5f7fa;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #4CAF50;
+        }
+
+        .section-title p {
+            color: #777;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            height: 280px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 25px;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .testimonial-text:before {
+            content: '\201C';
+            font-size: 4rem;
+            color: #4CAF50;
+            opacity: 0.3;
+            position: absolute;
+            top: -20px;
+            left: -15px;
+            font-family: serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+            border: 3px solid #4CAF50;
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Booking Section */
+        .booking {
+            padding: 80px 0;
+            background-color: #f5f7fa;
+        }
+
+        .booking-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .booking-form {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .accordion {
+            max-width: 800px;
+            margin: 50px auto 0;
+        }
+
+        .accordion-item {
+            margin-bottom: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .accordion-header {
+            background-color: #f8f9fa;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #2c3e50;
+            transition: all 0.3s;
+        }
+
+        .accordion-header:hover {
+            background-color: #e9ecef;
+        }
+
+        .accordion-header i {
+            transition: transform 0.3s;
+        }
+
+        .accordion-header.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .accordion-header.active i {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #fff;
+        }
+
+        .accordion-content-inner {
+            padding: 20px 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #4CAF50;
+        }
+
+        .footer-col p {
+            color: #ecf0f1;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: block;
+        }
+
+        .footer-links a:hover {
+            color: #4CAF50;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #4CAF50;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .header-content h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .details-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .trek-overview {
+                position: static;
+                margin-top: 50px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header-content p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-form {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .trek-content h2 {
+                font-size: 2rem;
+            }
+            
+            .trek-content h3 {
+                font-size: 1.5rem;
+            }
+            
+            .price {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <nav>
+            <div class="container">
+                <a href="index.html" class="logo">Kashmir Treks</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#treks">Treks</a></li>
+                    <li><a href="plantrip.html" class="nav-link">Plan Trip</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                   
+                </ul>
+            </div>
+        </nav>
+        
+        <div class="header-content">
+            <h1>Kashmir Great Lakes Trek</h1>
+            <p>Discover the most beautiful alpine lakes in the Himalayas on this 7-day trek through paradise</p>
+          
+        </div>
+    </header>
+    
+    <!-- Trek Details Section -->
+    <section class="trek-details">
+        <div class="container">
+            <div class="details-container">
+                <div class="trek-content">
+                    <h2>About Kashmir Great Lakes Trek</h2>
+                    <p>The Kashmir Great Lakes Trek is undoubtedly one of the most beautiful treks in India. This 7-day journey takes you through some of the most stunning alpine lakes in the Himalayas, each more beautiful than the last. The trek passes through lush green meadows, pine forests, and high mountain passes with breathtaking views of snow-capped peaks.</p>
+                    
+                    <div class="highlight-box">
+                        <p>This trek is often described as "heaven on earth" and offers the perfect combination of adventure and natural beauty, making it a must-do for every trekking enthusiast.</p>
+                    </div>
+                    
+                    <h3>Trek Itinerary</h3>
+                    <p><strong>Day 1: Srinagar to Sonamarg (Drive) + Trek to Nichnai</strong></p>
+                    <ul>
+                        <li>Drive from Srinagar to Sonamarg (3 hours)</li>
+                        <li>Start trek through pine forests and meadows</li>
+                        <li>Gradual ascent to Nichnai campsite</li>
+                        <li>Trekking time: 6-7 hours</li>
+                        <li>Overnight camping at 11,500 ft</li>
+                    </ul>
+                    
+                    <p><strong>Day 2: Nichnai to Vishansar Lake via Nichnai Pass</strong></p>
+                    <ul>
+                        <li>Steep climb to Nichnai Pass (13,500 ft)</li>
+                        <li>Stunning views of the surrounding peaks</li>
+                        <li>Descend to Vishansar Lake campsite</li>
+                        <li>Trekking time: 7-8 hours</li>
+                        <li>Camp by the pristine Vishansar Lake</li>
+                    </ul>
+                    
+                    <p><strong>Day 3: Vishansar Lake to Gadsar via Gadsar Pass</strong></p>
+                    <ul>
+                        <li>Visit Krishansar Lake en route</li>
+                        <li>Challenging climb to Gadsar Pass (13,750 ft)</li>
+                        <li>Descend to Gadsar Lake and campsite</li>
+                        <li>Trekking time: 6-7 hours</li>
+                        <li>Camp near the beautiful Gadsar Lake</li>
+                    </ul>
+                    
+                    <p><strong>Day 4: Gadsar to Satsar Lakes</strong></p>
+                    <ul>
+                        <li>Relatively easier day of trekking</li>
+                        <li>Pass through beautiful meadows and streams</li>
+                        <li>Reach the cluster of Satsar Lakes</li>
+                        <li>Trekking time: 5-6 hours</li>
+                        <li>Camp near the Satsar Lakes</li>
+                    </ul>
+                    
+                    <p><strong>Day 5: Satsar to Gangabal Twin Lakes</strong></p>
+                    <ul>
+                        <li>Cross the Zajibal Pass (13,000 ft)</li>
+                        <li>First views of the stunning Gangabal Lakes</li>
+                        <li>Descend to Nundkol and Gangabal Lakes</li>
+                        <li>Trekking time: 6-7 hours</li>
+                        <li>Camp with spectacular views of Harmukh peak</li>
+                    </ul>
+                    
+                    <p><strong>Day 6: Gangabal Lakes to Naranag (Trek) + Drive to Srinagar</strong></p>
+                    <ul>
+                        <li>Gradual descent through pine forests</li>
+                        <li>Visit ancient Naranag temple complex</li>
+                        <li>Drive back to Srinagar (3 hours)</li>
+                        <li>Trekking time: 4-5 hours</li>
+                        <li>Overnight in Srinagar (hotel stay)</li>
+                    </ul>
+                    
+                    <h3>What to Expect</h3>
+                    <p>The Kashmir Great Lakes trek is rated as moderate to difficult and offers:</p>
+                    <ul>
+                        <li>Seven stunning high-altitude alpine lakes</li>
+                        <li>Diverse landscapes from meadows to rocky passes</li>
+                        <li>Views of snow-capped peaks including Harmukh</li>
+                        <li>Rich biodiversity - spot Himalayan marmots and trout</li>
+                        <li>Authentic Kashmiri cultural experiences</li>
+                        <li>Challenging but rewarding high mountain passes</li>
+                    </ul>
+                    
+                    <h3>Essential Information</h3>
+                    <p><strong>Best Season:</strong> July to September</p>
+                    <p><strong>Difficulty:</strong> Moderate to Difficult</p>
+                    <p><strong>Max Altitude:</strong> 13,750 ft (Gadsar Pass)</p>
+                    <p><strong>Trek Distance:</strong> 72 km (total)</p>
+                    <p><strong>Temperature:</strong> Day: 10-20°C, Night: 0-10°C</p>
+                </div>
+                
+                <div class="trek-overview">
+                    <h3 class="overview-title">Trek Overview</h3>
+                    
+                    <div class="overview-item">
+                        <h4><i class="fas fa-calendar-alt"></i> Duration</h4>
+                        <p>7 Days / 6 Nights</p>
+                    </div>
+                    
+                    <div class="overview-item">
+                        <h4><i class="fas fa-mountain"></i> Difficulty</h4>
+                        <p>Moderate-Difficult</p>
+                    </div>
+                    
+                    <div class="overview-item">
+                        <h4><i class="fas fa-arrow-up"></i> Max Altitude</h4>
+                        <p>13,750 ft (Gadsar Pass)</p>
+                    </div>
+                    
+                    <div class="overview-item">
+                        <h4><i class="fas fa-hiking"></i> Trek Distance</h4>
+                        <p>72 km (total)</p>
+                    </div>
+                    
+                    <div class="overview-item">
+                        <h4><i class="fas fa-calendar-day"></i> Best Season</h4>
+                        <p>July-September</p>
+                    </div>
+                    
+                    <div class="overview-item">
+                        <h4><i class="fas fa-users"></i> Group Size</h4>
+                        <p>6-15 people</p>
+                    </div>
+                    
+                    <div class="price">
+                        ₹18,999 <span>per person</span>
+                    </div>
+                    
+
+                    
+                    <div class="overview-item" style="margin-top: 30px;">
+                        <h4><i class="fas fa-question-circle"></i> Have Questions?</h4>
+                        <p>Call us at +91 98765 43210 or email info@kashmirtreks.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Glimpses of Kashmir Great Lakes</h2>
+                <p>Explore the stunning beauty of Kashmir's alpine lakes through these breathtaking images</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Vishansar Lake">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581434681345-b92671b813d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Krishansar Lake">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1588690154757-badf4644194f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Gadsar Lake">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Satsar Lakes">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581434681345-b92671b813d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Gangabal Lake">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1588690154757-badf4644194f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Nundkol Lake">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Trekkers Say</h2>
+                <p>Hear from those who have experienced the magic of Kashmir Great Lakes</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        The Kashmir Great Lakes trek was the most beautiful trek I've ever done. Each day brought new breathtaking landscapes and the lakes were like mirrors reflecting the mountains. Our guide was extremely knowledgeable about the region.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Priya Sharma">
+                        </div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>Bangalore, India</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        This trek exceeded all my expectations. The organization was perfect, the food was great, and the scenery was out of this world. Crossing the high passes was challenging but absolutely worth it for the views.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul Verma">
+                        </div>
+                        <div class="author-info">
+                            <h4>Rahul Verma</h4>
+                            <p>Mumbai, India</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        As an international traveler, I was amazed by the beauty of Kashmir. The trek was well-organized and our safety was always the priority. The lakes were so pristine and the camping spots were carefully chosen for the best views.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah Johnson">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>London, UK</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about the Kashmir Great Lakes trek</p>
+            </div>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>What is the best time to do this trek?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>The best time for the Kashmir Great Lakes trek is from July to September when the weather is pleasant and the lakes are at their most beautiful. The snow has melted by July, and the meadows are covered with wildflowers. September offers clearer skies but can be colder at night.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>How difficult is the Kashmir Great Lakes trek?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>The trek is rated as moderate to difficult. While the daily walking distances aren't extremely long (5-8 hours), the high altitude passes (especially Gadsar Pass at 13,750 ft) make it challenging. You should have good cardiovascular fitness and preferably some prior trekking experience.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>What kind of accommodation is provided?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>During the trek, you'll stay in high-quality tents (twin sharing) with sleeping bags and sleeping mats provided. In Srinagar at the start and end of the trek, you'll stay in a comfortable hotel. All camping equipment is provided by us - you just need to bring your personal items.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>What about food and water during the trek?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>We provide nutritious vegetarian meals throughout the trek, prepared by our experienced cooks. Breakfast typically includes porridge, eggs, toast, and tea/coffee. Lunch is packed for the trail, and dinner is a hot meal with soup, rice, dal, vegetables, and dessert. Water is collected from natural streams and boiled/filtered for safety.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>What should I pack for this trek?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Essential items include: trekking shoes, warm layers (thermals, fleece, down jacket), rain gear, sun protection (hat, sunglasses, sunscreen), water bottles, headlamp, personal medications, and toiletries. We provide a detailed packing list upon booking. Porters/mules carry the main luggage - you only need to carry a daypack with essentials.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ready for Your Adventure?</h2>
+                <p>Book your spot on the Kashmir Great Lakes trek today</p>
+            </div>
+            <div class="booking-container">
+                <div class="booking-form">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Preferred Start Date</label>
+                                <input type="date" id="date" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="participants">Number of Participants</label>
+                                <select id="participants" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="1">1 Person</option>
+                                    <option value="2">2 People</option>
+                                    <option value="3">3 People</option>
+                                    <option value="4">4 People</option>
+                                    <option value="5+">5+ People</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nationality">Nationality</label>
+                                <input type="text" id="nationality" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="experience">Previous Trekking Experience</label>
+                            <textarea id="experience" placeholder="Briefly describe any previous high-altitude trekking experience you have"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Special Requirements</label>
+                            <textarea id="message" placeholder="Any dietary restrictions, medical conditions, or special requests"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%; padding: 15px; font-size: 1.1rem;">Book Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>About Kashmir Treks</h3>
+                    <p>We specialize in creating unforgettable trekking experiences in the breathtaking landscapes of Kashmir. Our expert guides and carefully planned itineraries ensure you have the adventure of a lifetime.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Popular Treks</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Kashmir Great Lakes</a></li>
+                        <li><a href="#">Tarsar Marsar Trek</a></li>
+                        <li><a href="#">Kolahoi Glacier Trek</a></li>
+                        <li><a href="#">Sonamarg to Naranag Trek</a></li>
+                        <li><a href="#">Gulmarg Apharwat Peak</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Residency Road, Srinagar, Jammu & Kashmir</p>
+                    <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@kashmirtreks.com</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Chale Trip. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: #e74c3c;"></i> for the Himalayas</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Form submission handling
+        const bookingForm = document.querySelector('.booking-form form');
+        if (bookingForm) {
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your booking request! We will contact you shortly to confirm your Kashmir Great Lakes trek.');
+                this.reset();
+            });
+        }
+        
+        // Set minimum date for booking (tomorrow)
+        const dateInput = document.getElementById('date');
+        if (dateInput) {
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(today.getDate() + 1);
+            
+            const yyyy = tomorrow.getFullYear();
+            const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+            const dd = String(tomorrow.getDate()).padStart(2, '0');
+            
+            dateInput.min = `${yyyy}-${mm}-${dd}`;
+        }
+        
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionItem = header.parentElement;
+                const accordionContent = header.nextElementSibling;
+                
+                // Close all other items
+                document.querySelectorAll('.accordion-item').forEach(item => {
+                    if (item !== accordionItem) {
+                        item.querySelector('.accordion-header').classList.remove('active');
+                        item.querySelector('.accordion-content').style.maxHeight = null;
+                    }
+                });
+                
+                // Toggle current item
+                header.classList.toggle('active');
+                if (header.classList.contains('active')) {
+                    accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                } else {
+                    accordionContent.style.maxHeight = null;
+                }
+            });
+        });
+        
+        // Open first accordion item by default
+        if (accordionHeaders.length > 0) {
+            accordionHeaders[0].click();
+        }
+        
+        // Animation on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const windowHeight = window.innerHeight;
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < windowHeight - 100) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        // Initialize sections with fade-in effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                section.style.transitionDelay = `${index * 0.1}s`;
+            });
+            
+            // Trigger the animation
+            setTimeout(() => {
+                window.dispatchEvent(new Event('scroll'));
+            }, 100);
+        });
+    </script>
+</body>
+</html>

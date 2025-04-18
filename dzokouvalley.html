@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dzukou Valley Trek - The Valley of Flowers of Northeast India</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        :root {
+            --primary: #2e7d32;
+            --primary-dark: #1b5e20;
+            --secondary: #ff8f00;
+            --text: #333;
+            --light-text: #666;
+            --bg-light: #f5f5f5;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.7;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--text);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .header-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .header-content h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        .header-content p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            max-width: 800px;
+        }
+        
+        /* Hero Stats */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-box {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 20px 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .stat-box h3 {
+            font-size: 40px;
+            margin-bottom: 5px;
+            color: var(--secondary);
+        }
+        
+        .stat-box p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        /* Overview Section */
+        .overview {
+            background: var(--bg-light);
+        }
+        
+        .overview-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .overview-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        .overview-text p {
+            margin-bottom: 20px;
+            color: var(--light-text);
+        }
+        
+        .highlight-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-top: 30px;
+        }
+        
+        .highlight-box h4 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .highlight-list {
+            list-style: none;
+        }
+        
+        .highlight-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .highlight-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .overview-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .overview-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .overview-img:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Itinerary Section */
+        .itinerary-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--light-text);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .day-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .day-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .day-card h4 {
+            font-size: 18px;
+            margin: 20px 0 10px;
+            color: var(--text);
+        }
+        
+        .day-card p {
+            margin-bottom: 10px;
+            color: var(--light-text);
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            background: var(--bg-light);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .caption {
+            transform: translateY(0);
+        }
+        
+        /* Essentials Section */
+        .essentials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .essentials-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .essentials-card i {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .essentials-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .essentials-card ul {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .essentials-card ul li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .essentials-card ul li:before {
+            content: '•';
+            position: absolute;
+            left: 10px;
+            color: var(--primary);
+        }
+        
+        /* Booking Section */
+        .booking {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1500380804539-4e1e8c1e7118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+        }
+        
+        .booking h2 {
+            color: white;
+        }
+        
+        .booking p {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .price-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            padding: 40px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 30px 0;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .price span {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            font-weight: normal;
+        }
+        
+        .booking-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .booking-features li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .booking-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .header-content h1 {
+                font-size: 48px;
+            }
+            
+            .overview-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .overview-img {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .header-content h1 {
+                font-size: 36px;
+            }
+            
+            .header-content p {
+                font-size: 18px;
+            }
+            
+            .hero-stats {
+                gap: 20px;
+            }
+            
+            .stat-box {
+                padding: 15px 20px;
+            }
+            
+            .stat-box h3 {
+                font-size: 30px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Dzukou<span>Valley</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#itinerary">Itinerary</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#essentials">Essentials</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-content">
+                <h1>Dzukou Valley Trek</h1>
+                <p>Discover the breathtaking "Valley of Flowers of the East" nestled between Nagaland and Manipur. Trek through rolling hills covered in seasonal blooms and pristine streams.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-box">
+                        <h3>2,450m</h3>
+                        <p>Altitude</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>4 Days</h3>
+                        <p>Duration</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>Moderate</h3>
+                        <p>Difficulty</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>Oct-May</h3>
+                        <p>Best Season</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Overview Section -->
+    <section id="overview" class="overview section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Trek Overview</h2>
+                <p>Experience one of Northeast India's most beautiful treks through the enchanting Dzukou Valley</p>
+            </div>
+            
+            <div class="overview-content">
+                <div class="overview-text">
+                    <h3>The Valley of Flowers of the East</h3>
+                    <p>Dzukou Valley, located at the border of Nagaland and Manipur, is famous for its seasonal flowers and the rare Dzukou lily. The valley transforms into a colorful carpet of blooms during monsoon, while winter brings a magical frost-covered landscape.</p>
+                    <p>This moderate trek takes you through lush green hills, bamboo forests, and crystal-clear streams. The valley remains relatively untouched by commercialization, offering trekkers a pristine natural experience.</p>
+                    
+                    <div class="highlight-box">
+                        <h4>Trek Highlights</h4>
+                        <ul class="highlight-list">
+                            <li>Breathtaking views of rolling hills covered in flowers</li>
+                            <li>Stay in cozy bamboo huts at the valley base</li>
+                            <li>Visit to local Naga villages and cultural immersion</li>
+                            <li>Chance to spot rare flora like the Dzukou lily</li>
+                            <li>Campfire under starry skies</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="overview-img">
+                    <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dzukou Valley Landscape">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Itinerary Section -->
+    <section id="itinerary" class="itinerary section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Trek Itinerary</h2>
+                <p>Our carefully planned 4-day itinerary ensures you experience the best of Dzukou Valley</p>
+            </div>
+            
+            <div class="itinerary-tabs">
+                <button class="tab-btn active" onclick="openTab(event, 'day1')">Day 1</button>
+                <button class="tab-btn" onclick="openTab(event, 'day2')">Day 2</button>
+                <button class="tab-btn" onclick="openTab(event, 'day3')">Day 3</button>
+                <button class="tab-btn" onclick="openTab(event, 'day4')">Day 4</button>
+            </div>
+            
+            <div id="day1" class="tab-content active">
+                <div class="day-card">
+                    <h3>Day 1: Arrival in Kohima → Viswema Village → Trek to Dzukou Base</h3>
+                    <p>We begin our adventure with pickup from Kohima and drive to Viswema Village (1.5 hours). After meeting our local guides and packing lunch, we start our trek to the Dzukou Valley base camp.</p>
+                    
+                    <h4>Trek Details</h4>
+                    <p><strong>Distance:</strong> 8 km | <strong>Duration:</strong> 4-5 hours | <strong>Altitude Gain:</strong> 1,200m to 2,100m</p>
+                    
+                    <h4>Highlights</h4>
+                    <p>- Scenic drive through Naga countryside<br>
+                    - Traditional Naga lunch at Viswema<br>
+                    - Trek through bamboo forests with panoramic views<br>
+                    - Overnight in bamboo huts at base camp</p>
+                </div>
+            </div>
+            
+            <div id="day2" class="tab-content">
+                <div class="day-card">
+                    <h3>Day 2: Explore Dzukou Valley</h3>
+                    <p>After breakfast, we spend the day exploring the magnificent Dzukou Valley, walking through flower-covered hills and alongside crystal-clear streams.</p>
+                    
+                    <h4>Trek Details</h4>
+                    <p><strong>Distance:</strong> 10-12 km | <strong>Duration:</strong> 6-7 hours | <strong>Max Altitude:</strong> 2,450m</p>
+                    
+                    <h4>Highlights</h4>
+                    <p>- Full day to explore the valley's beauty<br>
+                    - Picnic lunch by the streams<br>
+                    - Photography opportunities of rare flowers<br>
+                    - Sunset views over the valley<br>
+                    - Campfire and stargazing at night</p>
+                </div>
+            </div>
+            
+            <div id="day3" class="tab-content">
+                <div class="day-card">
+                    <h3>Day 3: Dzukou Valley → Jakhama Village</h3>
+                    <p>We take a different route down to Jakhama Village, passing through diverse landscapes and getting a different perspective of the region.</p>
+                    
+                    <h4>Trek Details</h4>
+                    <p><strong>Distance:</strong> 10 km | <strong>Duration:</strong> 5-6 hours | <strong>Descent:</strong> 2,450m to 1,500m</p>
+                    
+                    <h4>Highlights</h4>
+                    <p>- Different scenic route for descent<br>
+                    - Visit to local Angami Naga village<br>
+                    - Cultural interaction with villagers<br>
+                    - Traditional Naga dinner<br>
+                    - Overnight in village homestay</p>
+                </div>
+            </div>
+            
+            <div id="day4" class="tab-content">
+                <div class="day-card">
+                    <h3>Day 4: Jakhama → Kohima → Departure</h3>
+                    <p>After breakfast, we drive back to Kohima (1 hour). You'll have time to visit the Kohima War Cemetery and local markets before departure.</p>
+                    
+                    <h4>Activities</h4>
+                    <p>- Visit to Kohima War Cemetery (WWII memorial)<br>
+                    - Exploration of local markets for souvenirs<br>
+                    - Optional lunch at local restaurant<br>
+                    - Drop at Kohima bus stand or hotel</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Gallery</h2>
+                <p>Visual journey through the breathtaking landscapes of Dzukou Valley</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dzukou Valley Flowers">
+                    <div class="caption">Seasonal blooms in Dzukou Valley</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dzukou Valley Landscape">
+                    <div class="caption">Rolling hills of Dzukou</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1470114716159-e389f8712fda?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dzukou Valley Stream">
+                    <div class="caption">Pristine streams in the valley</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Trekking in Dzukou">
+                    <div class="caption">Trekking through the valley</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Winter in Dzukou">
+                    <div class="caption">Winter wonderland in Dzukou</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sunset in Dzukou">
+                    <div class="caption">Sunset views from the valley</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Essentials Section -->
+    <section id="essentials" class="essentials section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Trek Essentials</h2>
+                <p>What to bring and know before you go on the Dzukou Valley trek</p>
+            </div>
+            
+            <div class="essentials-container">
+                <div class="essentials-card">
+                    <i class="fas fa-hiking"></i>
+                    <h3>What to Pack</h3>
+                    <ul>
+                        <li>Sturdy trekking shoes</li>
+                        <li>Backpack (40-50 liters)</li>
+                        <li>Warm layers (temperatures drop at night)</li>
+                        <li>Raincoat/poncho</li>
+                        <li>Water bottles (2 liters capacity)</li>
+                        <li>Headlamp/flashlight</li>
+                        <li>Personal medications</li>
+                    </ul>
+                </div>
+                
+                <div class="essentials-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Food & Accommodation</h3>
+                    <ul>
+                        <li>All meals included during trek</li>
+                        <li>Simple vegetarian/Naga cuisine</li>
+                        <li>Bamboo huts at base camp</li>
+                        <li>Village homestay on Day 3</li>
+                        <li>Carry energy bars/snacks if desired</li>
+                        <li>Purified drinking water provided</li>
+                    </ul>
+                </div>
+                
+                <div class="essentials-card">
+                    <i class="fas fa-info-circle"></i>
+                    <h3>Important Notes</h3>
+                    <ul>
+                        <li>Moderate fitness level required</li>
+                        <li>Acclimatize to altitude properly</li>
+                        <li>No plastic policy in valley</li>
+                        <li>Respect local customs</li>
+                        <li>October-May best for flowers</li>
+                        <li>Winter treks possible (colder)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Booking Section -->
+    <section id="booking" class="booking section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ready for Adventure?</h2>
+                <p>Book your Dzukou Valley trek today for an unforgettable experience</p>
+            </div>
+            
+            <div class="price-box">
+                <div class="price">₹8,999 <span>per person</span></div>
+                <p>All inclusive package for 4 days/3 nights</p>
+                
+                <ul class="booking-features">
+                    <li>All meals during the trek</li>
+                    <li>Experienced local guides</li>
+                    <li>Accommodation as per itinerary</li>
+                    <li>All permits and entry fees</li>
+                    <li>Kohima pickup and drop</li>
+                    <li>First aid and safety equipment</li>
+                </ul>
+                
+
+                <p style="margin-top: 20px; font-size: 14px;">For group discounts or custom dates, please contact us</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Dzukou Valley Trek</h3>
+                    <p>Specializing in authentic trekking experiences in Northeast India since 2012. Committed to sustainable tourism that benefits local communities.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="#overview">Overview</a>
+                    <a href="#itinerary">Itinerary</a>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#essentials">Essentials</a>
+                    <a href="#booking">Booking</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Kohima, Nagaland, India</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@dzukoutrek.com</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Other Treks</h3>
+                    <a href="#">Japfu Peak Trek</a>
+                    <a href="#">Khonoma Village Trek</a>
+                    <a href="#">Mount Saramati Expedition</a>
+                    <a href="#">Naga Heritage Trails</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Dzukou Valley Trek. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Tab functionality
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].className = tabcontent[i].className.replace(" active", "");
+            }
+            
+            tabbuttons = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            
+            document.getElementById(tabName).className += " active";
+            evt.currentTarget.className += " active";
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markha Valley Trek | ChaleTrip - Ladakh's Classic Himalayan Trek</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3a86ff;
+            --secondary-color: #8ecae6;
+            --accent-color: #219ebc;
+            --light-bg: #f8f9fa;
+            --dark-text: #1d3557;
+            --light-text: #6c757d;
+            --white: #ffffff;
+            --gold: #ffb703;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --border-radius: 16px;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 24px;
+            transition: var(--transition);
+        }
+        
+        .nav-logo i {
+            margin-right: 10px;
+            font-size: 28px;
+            color: var(--accent-color);
+        }
+        
+        .nav-logo span {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .nav-auth {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), #2667cc);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(58, 134, 255, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(58, 134, 255, 0.5);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(29, 53, 87, 0.7), rgba(29, 53, 87, 0.8)), 
+                        url('https://images.unsplash.com/photo-1580655650449-894a6c3254e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 80px;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -10%;
+            width: 120%;
+            height: 200px;
+            background: var(--light-bg);
+            transform: rotate(-3deg);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            animation: slideUp 1s ease;
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        .weather-badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 12px 25px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Floating Elements */
+        .floating-stupa {
+            position: absolute;
+            right: 5%;
+            bottom: 20%;
+            width: 150px;
+            animation: floating 6s ease-in-out infinite;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+            opacity: 0.9;
+        }
+        
+        .floating-mountain {
+            position: absolute;
+            left: 5%;
+            top: 30%;
+            width: 120px;
+            animation: floating 8s ease-in-out infinite 1s;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+            opacity: 0.8;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        /* Main Content */
+        .trek-overview {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+            transform: translateY(-50px);
+        }
+        
+        .trek-overview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: url('https://cdn-icons-png.flaticon.com/512/619/619032.png') no-repeat;
+            background-size: contain;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .trek-overview h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .trek-overview h2 i {
+            color: var(--gold);
+            font-size: 1.8rem;
+        }
+        
+        .trek-overview p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--dark-text);
+            line-height: 1.8;
+        }
+        
+        .highlight-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat {
+            background: rgba(142, 202, 230, 0.2);
+            padding: 15px 25px;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            color: var(--accent-color);
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .stat i {
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+        
+        /* Trek Highlights Section */
+        .highlights-section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .highlight-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 5px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .highlight-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .highlight-card i {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+        }
+        
+        .highlight-card ul {
+            list-style: none;
+        }
+        
+        .highlight-card li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: var(--dark-text);
+        }
+        
+        .highlight-card li i {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-top: 3px;
+        }
+        
+        /* Itinerary Section */
+        .itinerary-section {
+            background: linear-gradient(135deg, rgba(33, 158, 188, 0.1), rgba(142, 202, 230, 0.2));
+            padding: 60px;
+            border-radius: var(--border-radius);
+            margin-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .itinerary-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: url('https://cdn-icons-png.flaticon.com/512/854/854878.png') no-repeat;
+            background-size: contain;
+            opacity: 0.1;
+        }
+        
+        .itinerary-section h2 {
+            color: var(--accent-color);
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .itinerary-section h2 i {
+            color: var(--primary-color);
+        }
+        
+        .itinerary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .day-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .day-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 25px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .day-content {
+            padding: 25px;
+        }
+        
+        .day-content h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .day-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: var(--light-text);
+        }
+        
+        .day-distance {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .day-elevation {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .day-highlights {
+            margin-top: 15px;
+        }
+        
+        .day-highlights li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        
+        .day-highlights i {
+            color: var(--gold);
+            font-size: 0.8rem;
+            margin-top: 3px;
+        }
+        
+        /* Essential Info Section */
+        .info-section {
+            margin-bottom: 80px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .info-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .info-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            z-index: 2;
+        }
+        
+        .info-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .info-card:hover .info-image {
+            transform: scale(1.1);
+        }
+        
+        .info-content {
+            padding: 25px;
+            position: relative;
+        }
+        
+        .info-content h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .info-content p {
+            color: var(--light-text);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .info-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        /* Best Time Section */
+        .best-time-section {
+            margin-bottom: 80px;
+        }
+        
+        .time-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .time-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .time-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .time-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        .time-card .temp {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .time-card .season {
+            color: var(--light-text);
+            margin-bottom: 15px;
+        }
+        
+        .time-card .description {
+            color: var(--dark-text);
+            font-size: 0.9rem;
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            margin-bottom: 80px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: 250px;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--white);
+            padding: 15px;
+            font-size: 1rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--white);
+            padding: 80px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            position: relative;
+            z-index: 2;
+            font-size: 1.1rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-text);
+            color: var(--white);
+            padding: 80px 0 30px;
+            position: relative;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column p {
+            margin-bottom: 20px;
+            color: #adb5bd";
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column a {
+            color: #adb5bd";
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .footer-column a:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.2rem;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #adb5bd";
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .itinerary-section, .cta-section {
+                padding: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 0;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                height: auto;
+                padding: 120px 0 80px;
+                min-height: auto;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .trek-overview {
+                padding: 30px;
+                transform: translateY(0);
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .itinerary-section, .cta-section {
+                padding: 30px;
+            }
+            
+            .floating-stupa, .floating-mountain {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .highlight-card, .info-card {
+                max-width: 100%;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="nav-logo">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>ChaleTrip</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="treks.html" class="nav-link">Treks</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="plantrip.html" class="nav-link">Plan Trip</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <img src="https://cdn-icons-png.flaticon.com/512/619/619032.png" class="floating-stupa" alt="Stupa">
+        <img src="https://cdn-icons-png.flaticon.com/512/2936/2936886.png" class="floating-mountain" alt="Mountain">
+        <div class="hero-content">
+            <h1>Markha Valley Trek</h1>
+            <p class="subtitle">Ladakh's Classic Himalayan Trek Through Buddhist Villages & High Passes</p>
+            <div class="weather-badge">
+                <i class="fas fa-temperature-low"></i> 5°C - 25°C • Best June-September
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="trek-overview">
+            <h2><i class="fas fa-info-circle"></i> Trek Overview</h2>
+            <p>The Markha Valley Trek is Ladakh's most famous and diverse trek, offering a perfect blend of breathtaking landscapes, Buddhist culture, and adventurous high passes. This 7-8 day trek takes you through the heart of Hemis National Park, crossing three high passes over 5,000m, visiting remote monasteries, and staying in traditional Ladakhi villages. The trail follows the Markha River through spectacular canyons, past ancient mani walls, and offers stunning views of the Zanskar and Stok mountain ranges. Rated as moderate difficulty, it's accessible to fit beginners while still offering challenges for experienced trekkers.</p>
+            
+            <div class="highlight-stats">
+                <div class="stat">
+                    <i class="fas fa-star"></i>
+                    <span>4.8/5 (1,240 reviews)</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Duration: 7-8 days</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-mountain"></i>
+                    <span>Max Altitude: 5,260m (Kongmaru La)</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-hiking"></i>
+                    <span>Difficulty: Moderate</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Trek Highlights Section -->
+        <div class="highlights-section">
+            <h2 class="section-title"><i class="fas fa-medal"></i> Trek Highlights</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <h3><i class="fas fa-landmark"></i> Cultural Experiences</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Visit ancient Buddhist monasteries</li>
+                        <li><i class="fas fa-check"></i> Stay in traditional Ladakhi homestays</li>
+                        <li><i class="fas fa-check"></i> See prayer flags and mani walls</li>
+                        <li><i class="fas fa-check"></i> Experience village life in Markha</li>
+                        <li><i class="fas fa-check"></i> Learn about Himalayan Buddhism</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight-card">
+                    <h3><i class="fas fa-mountain"></i> Natural Wonders</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Cross three high mountain passes</li>
+                        <li><i class="fas fa-check"></i> Views of Kang Yatse (6,400m)</li>
+                        <li><i class="fas fa-check"></i> Dramatic river canyons</li>
+                        <li><i class="fas fa-check"></i> Unique high-altitude flora/fauna</li>
+                        <li><i class="fas fa-check"></i> Stargazing in clear mountain skies</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight-card">
+                    <h3><i class="fas fa-hiking"></i> Trekking Features</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Well-marked trail with river crossings</li>
+                        <li><i class="fas fa-check"></i> Varied terrain - valleys to high passes</li>
+                        <li><i class="fas fa-check"></i> Camping & homestay combinations</li>
+                        <li><i class="fas fa-check"></i> Gradual ascent for good acclimatization</li>
+                        <li><i class="fas fa-check"></i> Support from local guides and horsemen</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Itinerary Section -->
+        <div class="itinerary-section">
+            <h2><i class="fas fa-route"></i> Detailed Itinerary</h2>
+            <div class="itinerary-grid">
+                <div class="day-card">
+                    <div class="day-header">Day 1: Leh to Chilling to Skiu</div>
+                    <div class="day-content">
+                        <h3>Starting the Adventure</h3>
+                        <div class="day-details">
+                            <span class="day-distance"><i class="fas fa-road"></i> 10 km trek</span>
+                            <span class="day-elevation"><i class="fas fa-mountain"></i> 3,400m</span>
+                        </div>
+                        <ul class="day-highlights">
+                            <li><i class="fas fa-map-marker-alt"></i> Drive to Chilling (2 hrs)</li>
+                            <li><i class="fas fa-hiking"></i> Trek along Zanskar River</li>
+                            <li><i class="fas fa-home"></i> Overnight in Skiu village</li>
+                            <li><i class="fas fa-landmark"></i> Visit Skiu Monastery</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Day 2: Skiu to Markha</div>
+                    <div class="day-content">
+                        <h3>Entering Markha Valley</h3>
+                        <div class="day-details">
+                            <span class="day-distance"><i class="fas fa-road"></i> 20 km trek</span>
+                            <span class="day-elevation"><i class="fas fa-mountain"></i> 3,700m</span>
+                        </div>
+                        <ul class="day-highlights">
+                            <li><i class="fas fa-water"></i> Multiple river crossings</li>
+                            <li><i class="fas fa-tree"></i> Lush vegetation along river</li>
+                            <li><i class="fas fa-home"></i> Homestay in Markha village</li>
+                            <li><i class="fas fa-utensils"></i> Try local butter tea</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Day 3: Markha to Thachungtse</div>
+                    <div class="day-content">
+                        <h3>Higher into the Valley</h3>
+                        <div class="day-details">
+                            <span class="day-distance"><i class="fas fa-road"></i> 14 km trek</span>
+                            <span class="day-elevation"><i class="fas fa-mountain"></i> 4,200m</span>
+                        </div>
+                        <ul class="day-highlights">
+                            <li><i class="fas fa-mountain"></i> Views of Kang Yatse peak</li>
+                            <li><i class="fas fa-campground"></i> First camping night</li>
+                            <li><i class="fas fa-horse"></i> Meet local horsemen</li>
+                            <li><i class="fas fa-star"></i> Incredible night skies</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Day 4: Thachungtse to Nimaling</div>
+                    <div class="day-content">
+                        <h3>Approaching High Pass</h3>
+                        <div class="day-details">
+                            <span class="day-distance"><i class="fas fa-road"></i> 12 km trek</span>
+                            <span class="day-elevation"><i class="fas fa-mountain"></i> 4,700m</span>
+                        </div>
+                        <ul class="day-highlights">
+                            <li><i class="fas fa-water"></i> Pasturelands with grazing yaks</li>
+                            <li><i class="fas fa-mountain"></i> Base of Kongmaru La pass</li>
+                            <li><i class="fas fa-campground"></i> Camp below Kang Yatse</li>
+                            <li><i class="fas fa-binoculars"></i> Spot blue sheep and marmots</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Day 5: Nimaling to Shang Sumdo via Kongmaru La</div>
+                    <div class="day-content">
+                        <h3>Pass Crossing Day</h3>
+                        <div class="day-details">
+                            <span class="day-distance"><i class="fas fa-road"></i> 16 km trek</span>
+                            <span class="day-elevation"><i class="fas fa-mountain"></i> 5,260m</span>
+                        </div>
+                        <ul class="day-highlights">
+                            <li><i class="fas fa-mountain"></i> Cross Kongmaru La pass</li>
+                            <li><i class="fas fa-camera"></i> Panoramic Himalayan views</li>
+                            <li><i class="fas fa-water"></i> Descend to Martselang valley</li>
+                            <li><i class="fas fa-car"></i> Drive back to Leh (2 hrs)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Essential Info Section -->
+        <div class="info-section">
+            <h2 class="section-title"><i class="fas fa-info-circle"></i> Essential Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <img src="https://images.unsplash.com/photo-1580655650449-894a6c3254e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Fitness Preparation" class="info-image">
+                    <div class="info-content">
+                        <h3>Fitness Preparation</h3>
+                        <p>This trek requires good cardiovascular fitness. Prepare with 2-3 months of regular hiking, stair climbing, and endurance training. Altitude adds significant challenge, so arrive in Leh 2-3 days early to acclimatize.</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <img src="https://images.unsplash.com/photo-1580655650449-894a6c3254e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Packing List" class="info-image">
+                    <div class="info-content">
+                        <h3>Packing Essentials</h3>
+                        <p>Must-haves: sturdy trekking boots, -10°C sleeping bag, layered clothing, sun protection, headlamp, water purification, basic first aid kit. Porters carry 10kg max, so pack light but adequately for variable mountain weather.</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <img src="https://images.unsplash.com/photo-1580655650449-894a6c3254e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Altitude Sickness" class="info-image">
+                    <div class="info-content">
+                        <h3>Altitude Considerations</h3>
+                        <p>Proper acclimatization is crucial. Watch for headache, nausea, dizziness. Descend if symptoms worsen. Drink 4-5L water daily, avoid alcohol, eat carbs, and consider Diamox after consulting your doctor.</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <img src="https://images.unsplash.com/photo-1580655650449-894a6c3254e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Permits" class="info-image">
+                    <div class="info-content">
+                        <h3>Permits & Regulations</h3>
+                        <p>Requires Inner Line Permit for foreigners (arranged in Leh). Indian nationals need ID proof. Camping in designated areas only. No plastic, carry all trash out. Respect local customs and monasteries.</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <img src="https://images.unsplash.com/photo-1580655650449-894a6c3254e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Food" class="info-image">
+                    <div class="info-content">
+                        <h3>Food & Water</h3>
+                        <p>Homestays serve local Ladakhi meals (tsampa, thukpa, momos). Carry snacks like nuts, chocolate, energy bars. Treat all water with tablets/filters. Hot drinks provided at camps.</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <img src="https://images.unsplash.com/photo-1580655650449-894a6c3254e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Cost" class="info-image">
+                    <div class="info-content">
+                        <h3>Cost & Budget</h3>
+                        <p>Budget ₹25,000-40,000 for guided trek including permits, food, accommodation, transport. Additional costs: gear rental, tips (₹300-500/day for team), personal expenses. ATMs only in Leh.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Best Time Section -->
+        <div class="best-time-section">
+            <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Best Time to Trek</h2>
+            <div class="time-grid">
+                <div class="time-card">
+                    <h3>June</h3>
+                    <div class="temp">5°C - 18°C</div>
+                    <div class="season">Early Season</div>
+                    <div class="description">
+                        Fewer trekkers, snow melting creating full rivers. Some high passes may still have snow. Wildflowers begin blooming. Cooler temperatures.
+                    </div>
+                </div>
+                
+                <div class="time-card">
+                    <h3>July-August</h3>
+                    <div class="temp">10°C - 25°C</div>
+                    <div class="season">Peak Season</div>
+                    <div class="description">
+                        Warmest months with most stable weather. All passes accessible. More crowded. Lush green landscapes. Occasional afternoon showers possible.
+                    </div>
+                </div>
+                
+                <div class="time-card">
+                    <h3>September</h3>
+                    <div class="temp">0°C - 15°C</div>
+                    <div class="season">Late Season</div>
+                    <div class="description">
+                        Cooler temperatures, crystal clear skies. Fewer trekkers. Stunning autumn colors. Some services start winding down. Chance of early snow.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Gallery Section -->
+        <div class="gallery-section">
+            <h2 class="section-title"><i class="fas fa-images"></i> Trek Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1580655650449-894a6c3254e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Markha Valley">
+                    <div class="gallery-caption">Walking through the dramatic Markha Valley canyon</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1580655650449-894a6c3254e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Kongmaru La">
+                    <div class="gallery-caption">Crossing Kongmaru La pass at 5,260m</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1580655650449-894a6c3254e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Village Life">
+                    <div class="gallery-caption">Traditional Ladakhi village homestay in Markha</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1580655650449-894a6c3254e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Kang Yatse">
+                    <div class="gallery-caption">Kang Yatse peak (6,400m) from Nimaling plains</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1580655650449-894a6c3254e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="River Crossing">
+                    <div class="gallery-caption">Crossing one of many Markha River crossings</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1580655650449-894a6c3254e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Monastery">
+                    <div class="gallery-caption">Ancient Buddhist monastery along the trek route</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Ready for Your Markha Valley Adventure?</h2>
+            <p>Join our small-group treks with experienced local guides, quality equipment, and responsible travel practices that support Ladakhi communities.</p>
+            <div class="cta-buttons">
+                <a href="plantrip.html" class="btn btn-primary">Plan Trip Now </a>
+                
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ChaleTrip</h3>
+                    <p>Specializing in Himalayan treks since 2023. We're committed to responsible trekking that benefits local mountain communities.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ladakh Treks</h3>
+                    <ul>
+                        <li><a href="markha-trek.html">Markha Valley Trek</a></li>
+                        <li><a href="stok-kangri.html">Stok Kangri Expedition</a></li>
+                        <li><a href="chadar-trek.html">Chadar Trek</a></li>
+                        <li><a href="sham-valley.html">Sham Valley Trek</a></li>
+                        <li><a href="nubra-trek.html">Nubra Valley Trek</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Trek Resources</h3>
+                    <ul>
+                        <li><a href="altitude-guide.html">Altitude Guide</a></li>
+                        <li><a href="packing-list.html">Packing Checklist</a></li>
+                        <li><a href="fitness-guide.html">Fitness Preparation</a></li>
+                        <li><a href="ladakh-permits.html">Permit Information</a></li>
+                        <li><a href="responsible-trekking.html">Leave No Trace</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Trekking Blog</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 ChaleTrip. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--primary-color);"></i> for trekkers</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.trek-overview, .highlight-card, .day-card, .info-card, .time-card, .gallery-item');
+            
+            elements.forEach((element, index) => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.1}s`;
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on load
+        
+        // Floating elements animation
+        const floatingElements = document.querySelectorAll('.floating-stupa, .floating-mountain');
+        floatingElements.forEach(el => {
+            const randomDelay = Math.random() * 2;
+            el.style.animationDelay = `${randomDelay}s`;
+        });
+    </script>
+</body>
+</html>

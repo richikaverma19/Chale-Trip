@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Triangle Tour - Delhi | Agra | Jaipur</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://example.com/golden-triangle-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            font-style: italic;
+        }
+        
+        nav {
+            background-color: #d4af37; /* Gold color */
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0 20px;
+        }
+        
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .intro {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .city-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 40px 0;
+        }
+        
+        .city-card {
+            width: 32%;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .city-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .city-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .city-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .city-card:hover .city-img img {
+            transform: scale(1.1);
+        }
+        
+        .city-content {
+            padding: 20px;
+            background: white;
+        }
+        
+        .city-content h3 {
+            color: #d4af37;
+            margin-top: 0;
+        }
+        
+        .highlights {
+            background-color: #f9f9f9;
+            padding: 50px 0;
+        }
+        
+        .itinerary {
+            margin: 50px 0;
+        }
+        
+        .day-card {
+            background: white;
+            border-left: 4px solid #d4af37;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .city-card {
+                width: 100%;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Golden Triangle Tour</h1>
+        <p class="tagline">Discover the Cultural Heart of India</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#delhi">Delhi</a></li>
+            <li><a href="#agra">Agra</a></li>
+            <li><a href="#jaipur">Jaipur</a></li>
+            <li><a href="#itinerary">Itinerary</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="overview" class="intro">
+            <h2>India's Golden Triangle</h2>
+            <p>The Golden Triangle is India's most popular tourist circuit, connecting the capital city Delhi with Agra (home of the Taj Mahal) and Jaipur (the Pink City) in Rajasthan. This route forms a triangle on the map, covering approximately 720 km by road.</p>
+            <p>Experience the rich history, diverse cultures, and architectural wonders of North India through this unforgettable journey.</p>
+        </section>
+        
+        <section class="city-cards">
+            <div class="city-card" id="delhi">
+                <div class="city-img">
+                    <img src="https://example.com/delhi.jpg" alt="Delhi">
+                </div>
+                <div class="city-content">
+                    <h3>Delhi - The Capital</h3>
+                    <p>Delhi, India's capital territory, is a massive metropolitan area with a rich history dating back centuries. From Mughal architecture to modern skyscrapers, Delhi offers a fascinating blend of old and new.</p>
+                    <h4>Key Attractions:</h4>
+                    <ul>
+                        <li>Red Fort</li>
+                        <li>Qutub Minar</li>
+                        <li>India Gate</li>
+                        <li>Lotus Temple</li>
+                        <li>Humayun's Tomb</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="city-card" id="agra">
+                <div class="city-img">
+                    <img src="https://example.com/agra.jpg" alt="Agra">
+                </div>
+                <div class="city-content">
+                    <h3>Agra - City of the Taj</h3>
+                    <p>Agra is home to India's most iconic monument - the Taj Mahal. This Mughal city on the banks of the Yamuna River was once the capital of the empire and boasts several UNESCO World Heritage Sites.</p>
+                    <h4>Key Attractions:</h4>
+                    <ul>
+                        <li>Taj Mahal</li>
+                        <li>Agra Fort</li>
+                        <li>Fatehpur Sikri</li>
+                        <li>Itmad-ud-Daulah's Tomb</li>
+                        <li>Mehtab Bagh</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="city-card" id="jaipur">
+                <div class="city-img">
+                    <img src="https://example.com/jaipur.jpg" alt="Jaipur">
+                </div>
+                <div class="city-content">
+                    <h3>Jaipur - The Pink City</h3>
+                    <p>Jaipur, the capital of Rajasthan, is known as the Pink City for the distinctive color of its buildings. A vibrant mix of Rajput and Mughal architecture, Jaipur offers palaces, forts, and colorful bazaars.</p>
+                    <h4>Key Attractions:</h4>
+                    <ul>
+                        <li>Amber Fort</li>
+                        <li>Hawa Mahal</li>
+                        <li>City Palace</li>
+                        <li>Jantar Mantar</li>
+                        <li>Nahargarh Fort</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="highlights">
+            <h2 style="text-align: center;">Trip Highlights</h2>
+            <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 30px;">
+                <div style="text-align: center; width: 200px; margin: 10px;">
+                    <h3>🏰</h3>
+                    <h4>Historic Monuments</h4>
+                    <p>3 UNESCO World Heritage Sites</p>
+                </div>
+                <div style="text-align: center; width: 200px; margin: 10px;">
+                    <h3>🍛</h3>
+                    <h4>Culinary Delights</h4>
+                    <p>Experience diverse North Indian cuisines</p>
+                </div>
+                <div style="text-align: center; width: 200px; margin: 10px;">
+                    <h3>🛍️</h3>
+                    <h4>Shopping</h4>
+                    <p>Markets for handicrafts, textiles & jewelry</p>
+                </div>
+                <div style="text-align: center; width: 200px; margin: 10px;">
+                    <h3>📸</h3>
+                    <h4>Photo Ops</h4>
+                    <p>Countless Instagram-worthy spots</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="itinerary" class="itinerary">
+            <h2 style="text-align: center;">Sample 6-Day Itinerary</h2>
+            
+            <div class="day-card">
+                <h3>Day 1: Arrival in Delhi</h3>
+                <p>Arrive in Delhi, meet your guide. Visit Qutub Minar, Humayun's Tomb, and India Gate. Evening at leisure.</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>Day 2: Delhi Sightseeing</h3>
+                <p>Explore Red Fort, Jama Masjid, Chandni Chowk market. Afternoon visit to Lotus Temple and Akshardham.</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>Day 3: Delhi to Agra</h3>
+                <p>Drive to Agra (4 hours). Visit Agra Fort and Mehtab Bagh for sunset views of Taj Mahal.</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>Day 4: Agra to Jaipur</h3>
+                <p>Sunrise visit to Taj Mahal. Drive to Jaipur via Fatehpur Sikri (6 hours).</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>Day 5: Jaipur Exploration</h3>
+                <p>Visit Amber Fort, City Palace, Jantar Mantar, and Hawa Mahal. Explore local markets.</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>Day 6: Jaipur to Delhi</h3>
+                <p>Morning at leisure. Drive back to Delhi (5 hours) for departure.</p>
+            </div>
+        </section>
+    </div>
+    
+    <footer id="contact">
+        <h3>Plan Your Golden Triangle Adventure</h3>
+        <p>Email: info@goldentriangletour.com | Phone: +91-XXXXX-XXXXX</p>
+        <div class="social-links">
+            <a href="#">📱</a>
+            <a href="#">📘</a>
+            <a href="#">📸</a>
+            <a href="#">🐦</a>
+        </div>
+        <p>&copy; 2023 Golden Triangle Tours. All rights reserved.</p>
+    </footer>
+</body>
+</html>
