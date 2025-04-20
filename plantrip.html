@@ -967,6 +967,33 @@
                 height: 400px;
             }
         }
+/* Add to your existing CSS */
+.phrase-translation {
+  font-size: 1.1rem;
+  margin: 10px 0;
+  min-height: 24px;
+}
+
+#translationResult {
+  transition: all 0.3s ease;
+}
+
+#translationResult.highlight {
+  animation: highlight 1.5s ease;
+}
+
+@keyframes highlight {
+  0% { background-color: var(--accent); }
+  100% { background-color: #f8f9fa; }
+}
+
+.phrase-audio {
+  transition: transform 0.2s ease;
+}
+
+.phrase-audio:active {
+  transform: scale(0.9);
+}
     </style>
 </head>
 <body>
@@ -2000,6 +2027,181 @@
                 console.log('Playing audio for phrase');
             });
         });
+// Add this to the existing script section
+document.querySelectorAll('.phrase-audio').forEach(button => {
+    button.addEventListener('click', function() {
+        const phraseCard = this.closest('.phrase-card');
+        const phraseText = phraseCard.querySelector('.phrase-translation').textContent;
+        const language = document.getElementById('languageSelect').value;
+        
+        // In a real implementation, you would:
+        // 1. Have pre-recorded audio files for each phrase
+        // 2. Or use a text-to-speech API
+        
+        // Example using Web Speech API (browser support varies)
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(phraseText);
+            
+            // Set language based on selection
+            switch(language) {
+                case 'hindi':
+                    utterance.lang = 'hi-IN';
+                    break;
+                case 'tamil':
+                    utterance.lang = 'ta-IN';
+                    break;
+                case 'telugu':
+                    utterance.lang = 'te-IN';
+                    break;
+                // Add other language codes
+                default:
+                    utterance.lang = 'hi-IN';
+            }
+            
+            speechSynthesis.speak(utterance);
+        } else {
+            alert('Text-to-speech not supported in your browser');
+        }
+    });
+});
+// Add this to your existing JavaScript
+
+// Speech Synthesis Setup
+const synth = window.speechSynthesis;
+let voices = [];
+
+function populateVoiceList() {
+  voices = synth.getVoices();
+  // Filter for Indian language voices if available
+  const hindiVoice = voices.find(voice => voice.lang === 'hi-IN');
+  return hindiVoice || voices[0]; // Fallback to default voice
+}
+
+// Run once when voices are loaded
+synth.onvoiceschanged = populateVoiceList;
+
+// Function to speak text
+function speakText(text, lang) {
+  if (synth.speaking) {
+    synth.cancel();
+  }
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  const voice = populateVoiceList();
+  
+  // Set language if available
+  if (lang) {
+    utterance.lang = lang;
+    // Try to find a matching voice
+    const langVoice = voices.find(v => v.lang === lang);
+    if (langVoice) utterance.voice = langVoice;
+  } else if (voice) {
+    utterance.voice = voice;
+  }
+
+  synth.speak(utterance);
+}
+
+// Connect audio buttons
+document.querySelectorAll('.phrase-audio').forEach(button => {
+  button.addEventListener('click', function() {
+    const phraseCard = this.closest('.phrase-card');
+    const translation = phraseCard.querySelector('.phrase-translation').textContent;
+    const langSelect = document.getElementById('languageSelect');
+    const langCode = getLangCode(langSelect.value);
+    speakText(translation, langCode);
+  });
+});
+
+// Helper function to get language codes
+function getLangCode(language) {
+  const codes = {
+    'hindi': 'hi-IN',
+    'tamil': 'ta-IN',
+    'telugu': 'te-IN',
+    'bengali': 'bn-IN',
+    'marathi': 'mr-IN',
+    'gujarati': 'gu-IN',
+    'punjabi': 'pa-IN',
+    'malayalam': 'ml-IN'
+  };
+  return codes[language] || 'en-US';
+}// Add this to your existing JavaScript
+
+// Translation data - in a real app this would come from an API
+const translations = {
+  'hindi': {
+    'Hello': 'नमस्ते (Namaste)',
+    'Thank you': 'धन्यवाद (Dhanyavaad)',
+    'How much is this?': 'यह कितने का है? (Yeh kitne ka hai?)',
+    'Where is...?': '... कहाँ है? (... kahaan hai?)',
+    'I need help': 'मुझे मदद चाहिए (Mujhe madad chahiye)',
+    'No spicy, please': 'मिर्च कम, कृपया (Mirch kam, kripaya)',
+    'How to go to...?': '... कैसे जाएँ? (... kaise jaaye?)',
+    'Delicious!': 'बहुत स्वाद है! (Bohot swaad hai!)'
+  },
+  'tamil': {
+    'Hello': 'வணக்கம் (Vaṇakkam)',
+    'Thank you': 'நன்றி (Naṉṟi)',
+    // Add other phrases for Tamil
+  },
+  // Add other languages similarly
+};
+
+// Translation function
+function translatePhrase(text, targetLang) {
+  const langData = translations[targetLang.toLowerCase()];
+  if (!langData) return "Translation not available";
+  
+  // Try to find exact match first
+  if (langData[text]) {
+    return langData[text];
+  }
+  
+  // Fallback - in a real app you'd use proper translation API
+  return `[${targetLang} translation of: ${text}]`;
+}
+
+// Connect translation button
+document.getElementById('translateBtn').addEventListener('click', function() {
+  const phrase = document.getElementById('phraseToTranslate').value;
+  const targetLang = document.getElementById('translateLanguage').value;
+  const resultElement = document.getElementById('translationResult');
+  
+  if (!phrase) {
+    resultElement.textContent = "Please enter a phrase to translate";
+    return;
+  }
+  
+  const translation = translatePhrase(phrase, targetLang);
+  resultElement.textContent = translation;
+  
+  // Optional: auto-speak the translation
+  const langCode = getLangCode(targetLang.toLowerCase());
+  speakText(translation.split(' (')[0], langCode); // Speak just the native script part
+});
+
+// Update phrases when language changes
+document.getElementById('languageSelect').addEventListener('change', function() {
+  const selectedLang = this.value;
+  const langCode = getLangCode(selectedLang);
+  const phraseCards = document.querySelectorAll('.phrase-card');
+  
+  phraseCards.forEach(card => {
+    const englishPhrase = card.querySelector('.phrase-text').textContent;
+    const translation = translations[selectedLang][englishPhrase] || 
+                       `[${selectedLang} translation]`;
+    
+    // Update the translation display
+    const translationParts = translation.split(' (');
+    card.querySelector('.phrase-translation').textContent = translationParts[0];
+    
+    // Update audio button to use new language
+    card.querySelector('.phrase-audio').onclick = function() {
+      speakText(translationParts[0], langCode);
+    };
+  });
+});
     </script>
 </body>
 </html>
