@@ -1,343 +1,240 @@
 chaletrip-backend/
+├── config/
+│   ├── db.js                # Database connection
+│   └── socket.js            # WebSocket configuration
+├── controllers/
+│   ├── authController.js
+│   ├── bookingController.js
+│   ├── destinationController.js
+│   ├── notificationController.js
+│   ├── tripController.js
+│   └── adminController.js
+├── middleware/
+│   ├── auth.js              # Authentication middleware
+│   ├── admin.js             # Admin check middleware
+│   └── errorHandler.js      # Custom error handling
 ├── models/
 │   ├── User.js
 │   ├── Destination.js
 │   ├── Trip.js
 │   ├── Booking.js
-│   └── Service.js
-├── middleware/
-│   └── auth.js
+│   ├── Service.js
+│   ├── Notification.js
+│   └── Review.js
 ├── routes/
 │   ├── auth.js
 │   ├── destinations.js
 │   ├── trips.js
 │   ├── bookings.js
-│   └── services.js
+│   ├── services.js
+│   ├── notifications.js
+│   ├── admin.js
+│   └── pdf.js
+├── services/
+│   ├── emailService.js
+│   ├── notificationService.js
+│   ├── pdfService.js
+│   └── mapService.js
+├── utils/
+│   ├── helpers.js
+│   ├── cache.js             # Redis caching
+│   └── validators.js
 ├── .env
-└── app.js
+├── app.js                   # Main application
+└── server.js                # HTTP/WebSocket server
 
 
 
 
-/routes/auth.js
-const express = require('express');
-const router = express.Router();
+
+
+config/db.js
+const mongoose = require('mongoose');
+const logger = require('../utils/logger');
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+    logger.info('MongoDB connected successfully');
+  } catch (err) {
+    logger.error('MongoDB connection error:', err);
+    process.exit(1);
+  }
+};
+
+module.exports = connectDB;
+
+
+
+config/socket.js
+const Notification = require('../models/Notification');
+const logger = require('../utils/logger');
+
+module.exports = (io) => {
+  io.on('connection', (socket) => {
+    logger.info(`New client connected: ${socket.id}`);
+
+    socket.on('join-user-room', async (userId) => {
+      socket.join(`user-${userId}`);
+      const unreadCount = await Notification.countDocuments({
+        userId,
+        read: false
+      });
+      io.to(`user-${userId}`).emit('unread-count', unreadCount);
+    });
+
+    socket.on('join-admin-room', () => {
+      socket.join('admin-room');
+    });
+
+    socket.on('disconnect', () => {
+      logger.info(`Client disconnected: ${socket.id}`);
+    });
+  });
+
+  global.io = io;
+};
+
+
+
+
+
+controllers/authController.js
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const { sendEmail } = require('../services/emailService');
+const logger = require('../utils/logger');
 
-// Register
-router.post('/register', async (req, res) => {
+exports.register = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
-
-    // Check if user exists
+    const { email, password, username } = req.body;
+    
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: 'User already exists' });
     }
 
-    // Hash password
     const salt = await bcrypt.genSalt(10);
     const passwordHash = await bcrypt.hash(password, salt);
 
-    // Create user
-    const newUser = new User({
+    const user = new User({
       username,
       email,
       passwordHash,
-      salt,
-      role: 'user',
-      profile: {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName
-      }
+      salt
     });
 
-    await newUser.save();
+    await user.save();
 
-    // Create token
-    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: '24h'
     });
 
-    res.status(201).json({ token, user: newUser });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+    // Send welcome email
+    await sendEmail({
+      email: user.email,
+      subject: 'Welcome to Chaletrip',
+      template: 'welcome',
+      data: { name: user.username }
+    });
 
-// Login
-router.post('/login', async (req, res) => {
+    res.status(201).json({ token, user });
+  } catch (err) {
+    logger.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
-
-    // Check if user exists
     const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+
+    if (!user || !(await bcrypt.compare(password, user.passwordHash))) {
+      return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    // Validate password
-    const isMatch = await bcrypt.compare(password, user.passwordHash);
-    if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' });
-    }
-
-    // Create token
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: '24h'
     });
 
     res.json({ token, user });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    logger.error(err);
+    res.status(500).json({ message: 'Server error' });
   }
-});
-
-// Forgot Password
-router.post('/forgot-password', async (req, res) => {
-  // Implementation for password reset
-});
-
-module.exports = router;
+}; 
 
 
 
 
-/routes/destinations.js
-const express = require('express');
-const router = express.Router();
-const Destination = require('../models/Destination');
 
-// Get all destinations
-router.get('/', async (req, res) => {
-  try {
-    const { type, search, limit } = req.query;
-    let query = {};
-
-    if (type) query.type = type;
-    if (search) query.name = { $regex: search, $options: 'i' };
-
-    const destinations = await Destination.find(query).limit(parseInt(limit) || 10);
-    res.json(destinations);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// Get single destination
-router.get('/:id', async (req, res) => {
-  try {
-    const destination = await Destination.findById(req.params.id);
-    if (!destination) {
-      return res.status(404).json({ message: 'Destination not found' });
-    }
-    res.json(destination);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// Get trek destinations
-router.get('/trek', async (req, res) => {
-  try {
-    const treks = await Destination.find({ type: 'trek' });
-    res.json(treks);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// Get city destinations
-router.get('/city', async (req, res) => {
-  try {
-    const cities = await Destination.find({ type: 'city' });
-    res.json(cities);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-module.exports = router;   
-
-
-
-/routes/trips.js
-const express = require('express');
-const router = express.Router();
+controllers/bookingController.js
+const Booking = require('../models/Booking');
 const Trip = require('../models/Trip');
-const auth = require('../middleware/auth');
+const { emitNotification } = require('../services/notificationService');
+const logger = require('../utils/logger');
 
-// Create trip (protected route)
-router.post('/', auth, async (req, res) => {
+exports.createBooking = async (req, res) => {
   try {
-    const { title, destinations, travelers, budget, preferences } = req.body;
+    const { tripId, items, paymentMethod } = req.body;
+    const userId = req.user.id;
 
-    const newTrip = new Trip({
-      userId: req.user.id,
-      title,
-      destinations,
-      travelers,
-      budget,
-      preferences,
-      status: 'planning'
-    });
-
-    await newTrip.save();
-    res.status(201).json(newTrip);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// Get user trips (protected)
-router.get('/user/:userId', auth, async (req, res) => {
-  try {
-    const trips = await Trip.find({ userId: req.params.userId });
-    res.json(trips);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// Get trip details
-router.get('/:id', auth, async (req, res) => {
-  try {
-    const trip = await Trip.findById(req.params.id);
+    const trip = await Trip.findById(tripId);
     if (!trip) {
       return res.status(404).json({ message: 'Trip not found' });
     }
-    
-    // Verify user owns the trip
-    if (trip.userId.toString() !== req.user.id) {
-      return res.status(403).json({ message: 'Unauthorized' });
-    }
 
-    res.json(trip);
+    const totalAmount = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+    const booking = new Booking({
+      userId,
+      tripId,
+      items,
+      totalAmount,
+      paymentMethod,
+      paymentStatus: 'paid'
+    });
+
+    await booking.save();
+
+    // Emit real-time notification
+    emitNotification(global.io, userId, {
+      type: 'booking',
+      message: `Your booking #${booking._id} is confirmed`,
+      bookingId: booking._id
+    });
+
+    res.status(201).json(booking);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    logger.error(err);
+    res.status(500).json({ message: 'Server error' });
   }
-});
-
-// Update trip
-router.put('/:id', auth, async (req, res) => {
-  try {
-    const updatedTrip = await Trip.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-    res.json(updatedTrip);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-module.exports = router; 
+};
 
 
 
 
-/routes/services.js
-const express = require('express');
-const router = express.Router();
-const Service = require('../models/Service');
-
-// Get all services
-router.get('/', async (req, res) => {
-  try {
-    const { type, destinationId } = req.query;
-    let query = {};
-    
-    if (type) query.type = type;
-    if (destinationId) query.destinationId = destinationId;
-
-    const services = await Service.find(query);
-    res.json(services);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// Get services by destination
-router.get('/destination/:destinationId', async (req, res) => {
-  try {
-    const services = await Service.find({ destinationId: req.params.destinationId });
-    res.json(services);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-module.exports = router;
-
-
-
-app.js
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const dotenv = require('dotenv');
-
-// Load env vars
-dotenv.config();
-
-// Create Express app
-const app = express();
-
-// Middleware
-app.use(cors());
-app.use(express.json());
-
-// Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.error(err));
-
-// Routes
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/destinations', require('./routes/destinations'));
-app.use('/api/trips', require('./routes/trips'));
-app.use('/api/bookings', require('./routes/bookings'));
-app.use('/api/services', require('./routes/services'));
-
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ error: 'Server error' });
-});
-
-// Start server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
-
-
-
-/middleware/auth.js
+middleware/auth.js
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const logger = require('../utils/logger');
 
-module.exports = async (req, res, next) => {
+exports.auth = async (req, res, next) => {
   try {
-    // Get token from header
     const token = req.header('Authorization')?.replace('Bearer ', '');
     
     if (!token) {
-      return res.status(401).json({ message: 'No token, authorization denied' });
+      return res.status(401).json({ message: 'No token provided' });
     }
 
-    // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    
-    // Get user from token
     const user = await User.findById(decoded.id).select('-passwordHash -salt');
+
     if (!user) {
       return res.status(401).json({ message: 'Invalid token' });
     }
@@ -345,18 +242,264 @@ module.exports = async (req, res, next) => {
     req.user = user;
     next();
   } catch (err) {
-    res.status(401).json({ message: 'Token is not valid' });
+    logger.error(err);
+    res.status(401).json({ message: 'Not authorized' });
+  }
+};
+
+exports.admin = async (req, res, next) => {
+  if (req.user.role !== 'admin') {
+    return res.status(403).json({ message: 'Admin access required' });
+  }
+  next();
+};
+
+
+
+models/User.js
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+
+const UserSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  email: { type: String, required: true, unique: true },
+  passwordHash: { type: String, required: true },
+  salt: { type: String, required: true },
+  role: { type: String, enum: ['user', 'admin', 'guide'], default: 'user' },
+  profile: {
+    firstName: String,
+    lastName: String,
+    avatar: String,
+    preferences: [String]
+  },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now }
+});
+
+UserSchema.methods.validatePassword = async function(password) {
+  return await bcrypt.compare(password, this.passwordHash);
+};
+
+module.exports = mongoose.model('User', UserSchema);
+
+
+
+models/Booking.js
+const mongoose = require('mongoose');
+
+const BookingItemSchema = new mongoose.Schema({
+  type: { type: String, enum: ['accommodation', 'activity', 'transport'], required: true },
+  itemId: { type: mongoose.Schema.Types.ObjectId, required: true },
+  name: { type: String, required: true },
+  date: { type: Date, required: true },
+  quantity: { type: Number, default: 1 },
+  price: { type: Number, required: true }
+});
+
+const BookingSchema = new mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  tripId: { type: mongoose.Schema.Types.ObjectId, ref: 'Trip', required: true },
+  items: [BookingItemSchema],
+  totalAmount: { type: Number, required: true },
+  paymentStatus: { type: String, enum: ['pending', 'paid', 'failed'], default: 'pending' },
+  paymentMethod: { type: String, required: true },
+  transactionId: String,
+  bookingDate: { type: Date, default: Date.now },
+  status: { type: String, enum: ['confirmed', 'cancelled', 'completed'], default: 'confirmed' }
+}, { timestamps: true });
+
+module.exports = mongoose.model('Booking', BookingSchema);
+
+
+
+
+routes/auth.js
+const express = require('express');
+const router = express.Router();
+const {
+  register,
+  login
+} = require('../controllers/authController');
+
+router.post('/register', register);
+router.post('/login', login);
+
+module.exports = router;
+
+
+
+routes/bookings.js
+const express = require('express');
+const router = express.Router();
+const auth = require('../middleware/auth');
+const {
+  createBooking,
+  getBooking,
+  getUserBookings
+} = require('../controllers/bookingController');
+
+router.post('/', auth, createBooking);
+router.get('/:id', auth, getBooking);
+router.get('/user/:userId', auth, getUserBookings);
+
+module.exports = router;
+
+
+
+
+services/emailService.js
+const nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail');
+const ejs = require('ejs');
+const fs = require('fs');
+const path = require('path');
+const logger = require('../utils/logger');
+
+const renderTemplate = async (templateName, data) => {
+  const templatePath = path.join(__dirname, `../templates/emails/${templateName}.ejs`);
+  const template = fs.readFileSync(templatePath, 'utf-8');
+  return ejs.render(template, data);
+};
+
+exports.sendEmail = async ({ email, subject, template, data }) => {
+  try {
+    const html = await renderTemplate(template, data);
+
+    if (process.env.NODE_ENV === 'production') {
+      sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+      await sgMail.send({
+        to: email,
+        from: process.env.EMAIL_FROM,
+        subject,
+        html
+      });
+    } else {
+      const transporter = nodemailer.createTransport({
+        host: process.env.MAILTRAP_HOST,
+        port: process.env.MAILTRAP_PORT,
+        auth: {
+          user: process.env.MAILTRAP_USER,
+          pass: process.env.MAILTRAP_PASS
+        }
+      });
+
+      await transporter.sendMail({
+        from: `"Chaletrip" <${process.env.EMAIL_FROM}>`,
+        to: email,
+        subject,
+        html
+      });
+    }
+
+    logger.info(`Email sent to ${email}`);
+  } catch (err) {
+    logger.error('Email sending failed:', err);
+    throw err;
   }
 };
 
 
 
 
-.env
-MONGODB_URI=mongodb://localhost:27017/chaletrip
-JWT_SECRET=your_jwt_secret_key
-PORT=5000
+utils/logger.js
+const { createLogger, format, transports } = require('winston');
+const { combine, timestamp, printf, colorize } = format;
 
+const logFormat = printf(({ level, message, timestamp }) => {
+  return `${timestamp} [${level}]: ${message}`;
+});
+
+const logger = createLogger({
+  level: 'info',
+  format: combine(
+    colorize(),
+    timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+    logFormat
+  ),
+  transports: [
+    new transports.Console(),
+    new transports.File({ filename: 'logs/error.log', level: 'error' }),
+    new transports.File({ filename: 'logs/combined.log' })
+  ]
+});
+
+module.exports = logger;
+
+
+
+
+
+app.js
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+const connectDB = require('./config/db');
+const errorHandler = require('./middleware/errorHandler');
+const logger = require('./utils/logger');
+
+// Connect to database
+connectDB();
+
+const app = express();
+
+// Middleware
+app.use(helmet());
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true
+}));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 1000
+});
+app.use(limiter);
+
+// Routes
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/bookings', require('./routes/bookings'));
+// Add other routes...
+
+// Error handling
+app.use(errorHandler);
+
+// Health check
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'OK' });
+});
+
+module.exports = app;
+
+
+
+server.js
+const http = require('http');
+const socketio = require('socket.io');
+const app = require('./app');
+const socketConfig = require('./config/socket');
+const logger = require('./utils/logger');
+
+const server = http.createServer(app);
+const io = socketio(server, {
+  cors: {
+    origin: process.env.FRONTEND_URL,
+    methods: ["GET", "POST"]
+  }
+});
+
+// Configure sockets
+socketConfig(io);
+
+const PORT = process.env.PORT || 5000;
+
+server.listen(PORT, () => {
+  logger.info(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+});
 
 
 
